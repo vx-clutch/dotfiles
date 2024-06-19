@@ -8,6 +8,9 @@ alias ff='fastfetch'
 if ! command -v zap &>/dev/null; then
     zsh <(curl -s https://raw.githubusercontent.com/zap-zsh/zap/master/install.zsh) --branch release-v1
 fi
+if ! command -v starship &>/dev/null; then
+    curl -sS https://starship.rs/install.sh | sh
+fi
 
 [ -f "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh" ] && source "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh"
 plug "zsh-users/zsh-autosuggestions"
@@ -20,6 +23,7 @@ plug "Aloxaf/fzf-tab"
 
 autoload -Uz compinit
 compinit
+
 
 eval "$(starship init zsh)"
 

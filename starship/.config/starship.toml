@@ -1,7 +1,7 @@
 add_newline = false
 
 format = """
-[==>](red)$directory$git_branch$character
+[==> ](red)$directory$git_branch$character
 """
 
 [directory]

@@ -6,7 +6,6 @@ format = """
 
 [directory]
 style = "#008080"
-home_symbol = ""
 
 [git_branch]
 format = "[git:(([\\($branch\\)](red)))](#6DACFA)"

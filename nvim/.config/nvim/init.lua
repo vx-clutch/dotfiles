@@ -916,3 +916,6 @@ vim.api.nvim_create_user_command('Wex', function()
   vim.cmd 'w'
   vim.cmd 'Oil'
 end, {})
+vim.api.nvim_create_user_command('G', function(opts)
+  vim.cmd('!' .. 'git ' .. table.concat(opts.fargs, ' '))
+end, { nargs = '+' })

@@ -917,5 +917,9 @@ vim.api.nvim_create_user_command('Wex', function()
   vim.cmd 'Oil'
 end, {})
 vim.api.nvim_create_user_command('G', function(opts)
-  vim.cmd('silent! !' .. 'git ' .. table.concat(opts.fargs, ' '))
-end, { nargs = '+' })
+  if #opts.fargs == 0 then
+    vim.cmd '!git status'
+  else
+    vim.cmd('silent! !' .. 'git ' .. table.concat(opts.fargs, ' '))
+  end
+end, { nargs = '*' })

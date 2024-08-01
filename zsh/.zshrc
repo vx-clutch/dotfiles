@@ -5,7 +5,6 @@ alias ls='ls --color=auto'
 alias ll='ls -lah'
 alias ff='fastfetch'
 alias apt='nala'
-alias cal='ncal -C'
 
 [ -f "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh" ] && source "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh"
 plug "zsh-users/zsh-autosuggestions"

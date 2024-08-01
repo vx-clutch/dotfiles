@@ -1,0 +1,20 @@
+general {
+	output_format = "i3bar"
+	colors = false
+	markup = pango
+	interval = 5
+	color_good = '#2f343f'
+		color_degraded = '#ebcb8b'
+		color_bad = '#ba5e57'
+}
+
+order += "battery"
+
+battery {
+        format = "%status %percentage %remaining"
+        last_full_capacity = true
+        low_threshold = 10
+        threshold_type = percentage
+        format_down = "No battery"
+        path = "/sys/class/power_supply/BAT0/uevent"
+}

@@ -6,6 +6,11 @@ alias ll='ls -lah'
 alias ff='fastfetch'
 alias apt='nala'
 alias b='bat --paging=always'
+alias t='tldrb'
+
+function tldrb {
+  tldr $1 | b
+}
 
 [ -f "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh" ] && source "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh"
 plug "zsh-users/zsh-autosuggestions"
@@ -25,6 +30,6 @@ if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] &&
   exec tmux
 fi
 
-export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:/usr/local/go/bin/
 export PATH=$PATH:/~/go/bin/
-export PATH=$PATH:/.gem
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"

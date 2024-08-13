@@ -33,3 +33,5 @@ fi
 export PATH=$PATH:/usr/local/go/bin/
 export PATH=$PATH:/~/go/bin/
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"

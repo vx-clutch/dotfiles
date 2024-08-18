@@ -67,16 +67,4 @@ return {
       -- configurations go here
     },
   },
-  {
-    'maxmx03/solarized.nvim',
-    lazy = false,
-    priority = 1000,
-    config = function()
-      vim.o.background = 'dark' -- or 'light'
-
-      vim.defer_fn(function()
-        vim.cmd.colorscheme 'solarized'
-      end, 0)
-    end,
-  },
 }

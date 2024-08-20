@@ -1,14 +1,15 @@
 add_newline = false
 
+# format = """
+# [==> ](red)$directory$git_branch$character
+# """
 format = """
-[==> ](red)$directory$git_branch$character
+$directory$git_branch
+; 
 """
 
 [directory]
 style = "#008080"
-
-[git_branch]
-format = "[git:(([\\($branch\\)](red)))](#6DACFA)"
 
 [git_status]
 ahead = '⇡${count}'

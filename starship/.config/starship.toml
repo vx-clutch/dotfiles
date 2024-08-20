@@ -4,7 +4,7 @@ add_newline = false
 # [==> ](red)$directory$git_branch$character
 # """
 format = """
-$directory$git_branch
+$directory$git_branch$git_status
 ; 
 """
 

@@ -110,4 +110,7 @@ return {
       require('autoclose').setup()
     end,
   },
+  {
+    'tjdevries/express_line.nvim',
+  },
 }

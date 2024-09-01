@@ -7,6 +7,7 @@ alias ff='fastfetch'
 alias apt='nala'
 alias b='bat --paging=always'
 alias t='tldrb'
+alias nv='nvim'
 
 function tldrb {
   tldr $1 | b

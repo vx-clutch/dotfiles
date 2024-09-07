@@ -8,7 +8,7 @@ alias apt='nala'
 alias b='bat --paging=always'
 alias t='tldrb'
 alias nv='nvim'
-alias lg='lazygit'
+alias gg='lazygit'
 
 function tldrb {
   tldr $1 | b

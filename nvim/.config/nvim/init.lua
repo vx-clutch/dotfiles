@@ -16,6 +16,10 @@ vim.opt.inccommand = "split"
 vim.opt.cursorline = true
 vim.opt.scrolloff = 8
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
+vim.opt.expandtab = true
+vim.bo.softtabstop = 2
 
 -- File navigation
 vim.keymap.set("n", "-", "<cmd>Oil<CR>")
@@ -367,6 +371,20 @@ require("lazy").setup({
 	{
 		"stevearc/oil.nvim",
 		opts = {},
+		config = function()
+			require("oil").setup({
+				default_file_explorer = true,
+				delete_to_trash = true,
+				skip_confirm_for_simple_edits = true,
+				view_options = {
+					show_hidden = true,
+					natural_order = true,
+					is_always_hidden = function(name, _)
+						return name == ".." or name == ".git"
+					end,
+				},
+			})
+		end,
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 	},
 	{

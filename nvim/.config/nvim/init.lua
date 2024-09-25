@@ -23,6 +23,25 @@ vim.bo.softtabstop = 2
 
 -- File navigation
 vim.keymap.set("n", "-", "<cmd>Oil<CR>")
+function openOil()
+	vim.cmd("new | Oil")
+	vim.api.nvim_create_autocmd("FileType", {
+		pattern = "oil",
+		group = vim.api.nvim_create_augroup("OilFileOpen", { clear = true }),
+		callback = function()
+			vim.api.nvim_buf_set_keymap(0, "n", "<CR>", ":lua openFileInOPane()<CR>", { noremap = true, silent = true })
+		end,
+	})
+end
+function openFileInOPane()
+	local selection = vim.fn.getline(".")
+	local filepath = vim.fn.expand(selection)
+	if vim.fn.filereadable(filepath) == 1 then
+		vim.cmd("bdelete")
+		vim.cmd("edit " .. filepath)
+	end
+end
+vim.keymap.set("n", "<leader>-", ":lua openOil()<CR>", { noremap = true, silent = true, desc = "File navigation" })
 
 -- TIP: Disable arrow keys in normal mode
 vim.keymap.set("n", "<left>", '<cmd>echo "Use h to move!!"<CR>')
@@ -437,6 +456,11 @@ require("lazy").setup({
 		"utilyre/barbecue.nvim",
 		name = "barbecue",
 		version = "*",
+		config = function()
+			require("barbecue").setup({
+				theme = "solarized",
+			})
+		end,
 		dependencies = {
 			"SmiteshP/nvim-navic",
 			"nvim-tree/nvim-web-devicons",
@@ -478,5 +502,50 @@ require("lazy").setup({
 				desc = "Quickfix List (Trouble)",
 			},
 		},
+	},
+	{
+		"vague2k/vague.nvim",
+		config = function()
+			require("vague").setup({})
+		end,
+	},
+	{
+		"nvim-lualine/lualine.nvim",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		config = function()
+			require("lualine").setup({
+				options = {
+					theme = "auto",
+					section_separators = "",
+					component_separators = "",
+					global_status = true,
+				},
+				sections = {
+					lualine_a = { "mode" },
+					lualine_b = {},
+					lualine_c = {
+						{
+							"filename",
+							file_status = true,
+							path = 0,
+							symbols = {
+								modified = "[+]",
+								readonly = "[-]",
+								unnamed = "[No Name]",
+								newfile = "[New]",
+							},
+							icons_enabled = true,
+						},
+					},
+					lualine_x = {},
+					lualine_y = {},
+					lualine_z = {
+						function()
+							return "[" .. vim.bo.filetype .. "]"
+						end,
+					},
+				},
+			})
+		end,
 	},
 })

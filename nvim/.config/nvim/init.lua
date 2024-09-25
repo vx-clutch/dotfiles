@@ -22,26 +22,12 @@ vim.opt.expandtab = true
 vim.bo.softtabstop = 2
 
 -- File navigation
-vim.keymap.set("n", "-", "<cmd>Oil<CR>")
-function openOil()
-	vim.cmd("new | Oil")
-	vim.api.nvim_create_autocmd("FileType", {
-		pattern = "oil",
-		group = vim.api.nvim_create_augroup("OilFileOpen", { clear = true }),
-		callback = function()
-			vim.api.nvim_buf_set_keymap(0, "n", "<CR>", ":lua openFileInOPane()<CR>", { noremap = true, silent = true })
-		end,
-	})
-end
-function openFileInOPane()
-	local selection = vim.fn.getline(".")
-	local filepath = vim.fn.expand(selection)
-	if vim.fn.filereadable(filepath) == 1 then
-		vim.cmd("bdelete")
-		vim.cmd("edit " .. filepath)
-	end
-end
-vim.keymap.set("n", "<leader>-", ":lua openOil()<CR>", { noremap = true, silent = true, desc = "File navigation" })
+vim.keymap.set("n", "-", "<cmd>Oil<CR>", { noremap = true, silent = true, desc = "Open Oil" })
+vim.keymap.set("n", "<leader>-", "<cmd>sp | Oil<CR>", { noremap = true, silent = true, desc = "Open Oil in new pane" })
+
+-- Terminal Navigation
+vim.keymap.set("n", "<leader>t", "<cmd>sp | term<CR>i", { noremap = true, silent = true, desc = "Open terminal" })
+vim.keymap.set("t", "<C-space>", "exit<CR>", { noremap = true, silent = true, desc = "Close Terminal" })
 
 -- TIP: Disable arrow keys in normal mode
 vim.keymap.set("n", "<left>", '<cmd>echo "Use h to move!!"<CR>')
@@ -89,7 +75,6 @@ require("lazy").setup({
 				{ "<leader>r", group = "[R]ename" },
 				{ "<leader>s", group = "[S]earch" },
 				{ "<leader>w", group = "[W]orkspace" },
-				{ "<leader>t", group = "[T]oggle" },
 				{ "<leader>h", group = "Git [H]unk", mode = { "n", "v" } },
 			})
 		end,

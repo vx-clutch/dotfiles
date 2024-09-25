@@ -494,38 +494,4 @@ require("lazy").setup({
 			require("vague").setup({})
 		end,
 	},
-	{
-		"nvim-lualine/lualine.nvim",
-		dependencies = { "nvim-tree/nvim-web-devicons" },
-		config = function()
-			local function centered_filename()
-				local filename = vim.fn.expand("%:t")
-				local total_width = vim.fn.winwidth(0)
-				local filename_length = #filename
-				local available_width = total_width - 40
-				local left_padding = math.floor((available_width - filename_length) / 2)
-				return string.rep(" ", left_padding) .. filename .. string.rep(" ", left_paddg)
-			end
-			require("lualine").setup({
-				options = {
-					theme = "auto",
-					section_separators = "",
-					component_separators = "",
-					global_status = true,
-				},
-				sections = {
-					lualine_a = { "mode" },
-					lualine_b = {},
-					lualine_c = {},
-					lualine_x = {},
-					lualine_y = {},
-					lualine_z = {
-						function()
-							return "[" .. vim.bo.filetype .. "]"
-						end,
-					},
-				},
-			})
-		end,
-	},
 })

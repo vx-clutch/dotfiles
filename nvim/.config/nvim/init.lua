@@ -513,6 +513,14 @@ require("lazy").setup({
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		config = function()
+			local function centered_filename()
+				local filename = vim.fn.expand("%:t")
+				local total_width = vim.fn.winwidth(0)
+				local filename_length = #filename
+				local available_width = total_width - 40
+				local left_padding = math.floor((available_width - filename_length) / 2)
+				return string.rep(" ", left_padding) .. filename .. string.rep(" ", left_paddg)
+			end
 			require("lualine").setup({
 				options = {
 					theme = "auto",
@@ -523,20 +531,7 @@ require("lazy").setup({
 				sections = {
 					lualine_a = { "mode" },
 					lualine_b = {},
-					lualine_c = {
-						{
-							"filename",
-							file_status = true,
-							path = 0,
-							symbols = {
-								modified = "[+]",
-								readonly = "[-]",
-								unnamed = "[No Name]",
-								newfile = "[New]",
-							},
-							icons_enabled = true,
-						},
-					},
+					lualine_c = {},
 					lualine_x = {},
 					lualine_y = {},
 					lualine_z = {

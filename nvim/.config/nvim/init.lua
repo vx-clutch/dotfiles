@@ -23,10 +23,27 @@ vim.bo.softtabstop = 2
 
 -- File navigation
 vim.keymap.set("n", "-", "<cmd>Oil<CR>", { noremap = true, silent = true, desc = "Open Oil" })
-vim.keymap.set("n", "<leader>-", "<cmd>sp | Oil<CR>", { noremap = true, silent = true, desc = "Open Oil in new pane" })
+function fileSplit()
+	local owin = vim.api.nvim_get_current_win()
+	vim.cmd("sp | Oil")
+	local sbuf = vim.api.nvim_get_current_buf()
+	vim.api.nvim_buf_set_keymap(
+		sbuf,
+		"n",
+		"<CR>",
+		"<cmd>lua vim.api.nvim_win_close(owin, true)<CR>",
+		{ noremap = true, desc = "File navigation" }
+	)
+end
+vim.keymap.set(
+	"n",
+	"<leader>-",
+	"<cmd>lua fileSplit()<CR>",
+	{ noremap = true, silent = true, desc = "Open Oil in new pane" }
+)
 
 -- Terminal Navigation
-vim.keymap.set("n", "<leader>t", "<cmd>sp | term<CR>i", { noremap = true, silent = true, desc = "Open terminal" })
+vim.keymap.set("n", "<C-space>", "<cmd>sp | term<CR>i", { noremap = true, silent = true, desc = "Open terminal" })
 vim.keymap.set("t", "<C-space>", "exit<CR>", { noremap = true, silent = true, desc = "Close Terminal" })
 
 -- TIP: Disable arrow keys in normal mode

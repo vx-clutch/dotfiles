@@ -40,5 +40,9 @@ git commit -m "$1"
 git push
 }
 
+function take() {
+  mkdir $1 && cd $1
+}
+
 # Motd logic
 clear; cal; cat ~/.motd

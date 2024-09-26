@@ -35,9 +35,9 @@ export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 function qs() {
-git add .
-git commit -m "$1"
-git push
+  git add .
+  git commit -m "$1"
+  git push
 }
 
 function take() {

@@ -20,6 +20,7 @@ vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 vim.bo.softtabstop = 2
+vim.keymap.set("n", "<C-q>", "<cmd>q<CR>", { noremap = true, silent = true, desc = "Quit" })
 
 -- File navigation
 vim.keymap.set("n", "-", "<cmd>Oil<CR>", { noremap = true, silent = true, desc = "Open Oil" })
@@ -27,6 +28,7 @@ function NavigationLogic()
 	local orgWin = vim.api.nvim_get_current_buf()
 	vim.cmd("split | Oil")
 	local secWin = vim.api.nvim_get_current_buf()
+	print("orgWin " .. orgWin)
 end
 vim.keymap.set(
 	"n",
@@ -39,6 +41,7 @@ vim.keymap.set(
 vim.keymap.set("n", "<leader>t", "<cmd>sp | term<CR>i", { noremap = true, silent = true, desc = "Open terminal" })
 vim.keymap.set("n", "<leader><leader>t", "<cmd>term<CR>i", { noremap = true, silent = true, desc = "Open terminal" })
 vim.keymap.set("t", "<C-space>", "exit<CR>", { noremap = true, silent = true, desc = "Close Terminal" })
+vim.keymap.set("t", "<C-q>", "exit<CR>", { noremap = true, silent = true, desc = "Close Terminal" })
 
 -- TIP: Disable arrow keys in normal mode
 vim.keymap.set("n", "<left>", '<cmd>echo "Use h to move!!"<CR>')

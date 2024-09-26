@@ -39,7 +39,7 @@ vim.keymap.set(
 -- Terminal Navigation
 vim.keymap.set("n", "<leader>t", "<cmd>sp | term<CR>i", { noremap = true, silent = true, desc = "Open terminal" })
 vim.keymap.set("n", "<leader><leader>t", "<cmd>term<CR>i", { noremap = true, silent = true, desc = "Open terminal" })
-vim.keymap.set("t", "<C-space>", "exit<CR>", { noremap = true, silent = true, desc = "Close Terminal" })
+vim.keymap.set("t", "<C-space>", "exit<CR><CR>", { noremap = true, silent = true, desc = "Close Terminal" })
 vim.keymap.set("t", "<C-q>", "exit<CR>", { noremap = true, silent = true, desc = "Close Terminal" })
 
 -- TIP: Disable arrow keys in normal mode

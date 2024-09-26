@@ -519,11 +519,7 @@ require("lazy").setup({
 				},
 				sections = {
 					lualine_a = { "mode" },
-					lualine_b = {
-						function()
-							return "freaky👅"
-						end,
-					},
+					lualine_b = {},
 					lualine_c = { "filename" },
 					lualine_x = {},
 					lualine_y = {},

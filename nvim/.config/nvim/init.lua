@@ -23,7 +23,7 @@ vim.bo.softtabstop = 2
 
 -- File navigation
 vim.keymap.set("n", "-", "<cmd>Oil<CR>", { noremap = true, silent = true, desc = "Open Oil" })
-vim.keymap.set("n", "<leader>-", "<cmd>lua OilSplit()<CR>", { noremap = true, silent = true, desc = "File navigation" })
+vim.keymap.set("n", "<leader>-", "<cmd>sp | Oil<CR>", { noremap = true, silent = true, desc = "File navigation" })
 
 -- Terminal Navigation
 vim.keymap.set("n", "<leader>t", "<cmd>sp | term<CR>i", { noremap = true, silent = true, desc = "Open terminal" })
@@ -501,14 +501,18 @@ require("lazy").setup({
 		config = function()
 			require("lualine").setup({
 				options = {
-					theme = "vague",
+					theme = "ayu_mirage",
 					component_separators = "",
 					section_separators = "",
 				},
 				sections = {
 					lualine_a = { "mode" },
-					lualine_b = {},
-					lualine_c = {},
+					lualine_b = {
+						function()
+							return "freaky👅"
+						end,
+					},
+					lualine_c = { "filename" },
 					lualine_x = {},
 					lualine_y = {},
 					lualine_z = {
@@ -516,14 +520,6 @@ require("lazy").setup({
 							return "[" .. vim.bo.filetype .. "]"
 						end,
 					},
-				},
-				inactive_sections = {
-					lualine_a = {},
-					lualine_b = {},
-					lualine_c = {},
-					lualine_x = {},
-					lualine_y = {},
-					lualine_z = {},
 				},
 			})
 		end,
@@ -535,6 +531,17 @@ require("lazy").setup({
 				"ThePrimeagen/harpoon",
 				branch = "harpoon2",
 			},
+		},
+	},
+	{
+		"ckarnell/Antonys-macro-repeater",
+	},
+	{
+		"OXY2DEV/markview.nvim",
+		lazy = false,
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter",
+			"nvim-tree/nvim-web-devicons",
 		},
 	},
 })

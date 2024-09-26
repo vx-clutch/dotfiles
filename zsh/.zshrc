@@ -33,5 +33,12 @@ export PATH=$PATH:/~/go/bin/
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+function qs() {
+git add .
+git commit -m "$1"
+git push
+}
+
 # Motd logic
 clear; cal; cat ~/.motd

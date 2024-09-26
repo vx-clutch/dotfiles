@@ -28,10 +28,6 @@ compinit
 
 eval "$(starship init zsh)"
 
-if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
-  exec tmux
-fi
-
 export PATH=$PATH:/usr/local/go/bin/
 export PATH=$PATH:/~/go/bin/
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"

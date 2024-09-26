@@ -23,7 +23,17 @@ vim.bo.softtabstop = 2
 
 -- File navigation
 vim.keymap.set("n", "-", "<cmd>Oil<CR>", { noremap = true, silent = true, desc = "Open Oil" })
-vim.keymap.set("n", "<leader>-", "<cmd>sp | Oil<CR>", { noremap = true, silent = true, desc = "File navigation" })
+function NavigationLogic()
+	local orgWin = vim.api.nvim_get_current_buf()
+	vim.cmd("split | Oil")
+	local secWin = vim.api.nvim_get_current_buf()
+end
+vim.keymap.set(
+	"n",
+	"<leader>-",
+	"<cmd>lua NavigationLogic()<CR>",
+	{ noremap = true, silent = true, desc = "File navigation" }
+)
 
 -- Terminal Navigation
 vim.keymap.set("n", "<leader>t", "<cmd>sp | term<CR>i", { noremap = true, silent = true, desc = "Open terminal" })

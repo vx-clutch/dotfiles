@@ -25,10 +25,9 @@ vim.keymap.set("n", "<C-q>", "<cmd>q<CR>", { noremap = true, silent = true, desc
 -- File navigation
 vim.keymap.set("n", "-", "<cmd>Oil<CR>", { noremap = true, silent = true, desc = "Open Oil" })
 function NavigationLogic()
-	local orgWin = vim.api.nvim_get_current_buf()
+	local orgWin = vim.api.nvim_get_current_win()
 	vim.cmd("split | Oil")
 	local secWin = vim.api.nvim_get_current_buf()
-	print("orgWin " .. orgWin)
 end
 vim.keymap.set(
 	"n",

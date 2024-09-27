@@ -554,9 +554,4 @@ require("lazy").setup({
 			})
 		end,
 	},
-	-- Lua
-	{
-		"folke/persistence.nvim",
-		event = "BufReadPre",
-	},
 })

@@ -20,6 +20,7 @@ vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 vim.bo.softtabstop = 2
+vim.opt.termguicolors = true
 vim.keymap.set("n", "<C-q>", "<cmd>q<CR>", { noremap = true, silent = true, desc = "Quit" })
 
 -- File navigation
@@ -542,6 +543,15 @@ require("lazy").setup({
 		"vx-clutch/comppls.nvim",
 		config = function()
 			require("comppls").setup()
+		end,
+	},
+	{
+		"norcalli/nvim-colorizer.lua",
+		config = function()
+			require("colorizer").setup({
+				"*",
+				css = { rgb_fn = true },
+			})
 		end,
 	},
 })

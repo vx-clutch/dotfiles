@@ -21,7 +21,6 @@ vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 vim.bo.softtabstop = 2
 vim.opt.termguicolors = true
-vim.keymap.set("n", "<C-q>", "<cmd>q<CR>", { noremap = true, silent = true, desc = "Quit" })
 
 -- File navigation
 vim.keymap.set("n", "-", "<cmd>Oil<CR>", { noremap = true, silent = true, desc = "Open Oil" })

@@ -541,4 +541,7 @@ require("lazy").setup({
 			},
 		},
 	},
+	{
+		"ckarnell/Antonys-macro-repeater",
+	},
 })

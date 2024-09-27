@@ -42,6 +42,9 @@ vim.keymap.set("n", "<leader><leader>t", "<cmd>term<CR>i", { noremap = true, sil
 vim.keymap.set("t", "<C-space>", "exit<CR><CR>", { noremap = true, silent = true, desc = "Close Terminal" })
 vim.keymap.set("t", "<C-q>", "exit<CR>", { noremap = true, silent = true, desc = "Close Terminal" })
 
+-- Compile
+vim.keymap.set("n", "<leader>cc", "<cmd>CompPls<CR>", { noremap = true, silent = true, desc = "Compile" })
+
 -- TIP: Disable arrow keys in normal mode
 vim.keymap.set("n", "<left>", '<cmd>echo "Use h to move!!"<CR>')
 vim.keymap.set("n", "<right>", '<cmd>echo "Use l to move!!"<CR>')
@@ -533,15 +536,12 @@ require("lazy").setup({
 		end,
 	},
 	{
-		"letieu/harpoon-lualine",
-		dependencies = {
-			{
-				"ThePrimeagen/harpoon",
-				branch = "harpoon2",
-			},
-		},
+		"ckarnell/Antonys-macro-repeater",
 	},
 	{
-		"ckarnell/Antonys-macro-repeater",
+		"vx-clutch/comppls.nvim",
+		config = function()
+			require("comppls").setup()
+		end,
 	},
 })

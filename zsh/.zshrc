@@ -11,7 +11,7 @@ alias nv='nvim'
 alias gg='lazygit'
 alias k='kubectl'
 
-function tldrb {
+function tb {
   tldr $1 | b
 }
 

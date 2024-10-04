@@ -9,8 +9,9 @@ alias b='bat --paging=always'
 alias t='tldrb'
 alias nv='nvim'
 alias gg='lazygit'
+alias k='kubectl'
 
-function tldrb {
+function tb {
   tldr $1 | b
 }
 

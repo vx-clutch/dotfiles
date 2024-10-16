@@ -10,6 +10,7 @@ return {
 	},
 	hide_tab_bar_if_only_one_tab = true, -- Hide tab bar if there's only one tab
 	scrollback_lines = 10000,
+	window_decorations = "NONE | RESIZE",
 
 	-- Vague.nvim-inspired theme colors
 	color_scheme = "Vague", -- Assuming you have a color scheme named Vague

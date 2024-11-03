@@ -31,7 +31,10 @@ eval "$(starship init zsh)"
 
 export PATH=$PATH:/usr/local/go/bin/
 export PATH=$PATH:/~/go/bin/
+export PATH=$PATH:/mnt/c/ProgramData/chocolatey/lib/mpvio.install/tools/mpv.exe
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+export JAVA_HOME=/usr/lib/jvm/java-11-openjdk
+export PATH=$JAVA_HOME/bin:$PATH
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 

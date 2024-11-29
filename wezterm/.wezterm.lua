@@ -44,6 +44,13 @@ return {
 		},
 	},
 
+	window_padding = {
+		left = 10, -- Padding on the left side
+		right = 10, -- Padding on the right side
+		top = 10, -- Padding on the top
+		bottom = 10, -- Padding on the bottom
+	},
+
 	-- Font settings (adjust as needed)
 	font = wezterm.font("JetBrains Mono"), -- Change this to your preferred font
 	font_size = 12.0, -- Adjust the font size

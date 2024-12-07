@@ -44,13 +44,34 @@ return {
 		},
 	},
 
-	window_padding = {
-		left = 10, -- Padding on the left side
-		right = 10, -- Padding on the right side
-		top = 10, -- Padding on the top
-		bottom = 10, -- Padding on the bottom
-	},
+	local default_padding = { left = 10, right = 10, top = 10, bottom = 10 }
+local fullscreen_padding = { left = 0, right = 0, top = 0, bottom = 0 }
 
+wezterm.on("window-config-reloaded", function(window)
+  window:set_config_overrides({ window_padding = default_padding })
+end)
+
+wezterm.on("toggle-fullscreen-padding", function(window, pane)
+  local overrides = window:get_config_overrides() or {}
+  if overrides.window_padding == nil or overrides.window_padding.left > 0 then
+    overrides.window_padding = fullscreen_padding
+  else
+    overrides.window_padding = default_padding
+  end
+  window:set_config_overrides(overrides)
+end)
+
+return {
+  -- Default configuration
+  color_scheme = "Vague",
+  font_size = 12.0,
+  window_padding = default_padding,
+
+  -- Keybinding to manually toggle padding
+  keys = {
+    { key = "p", mods = "ALT", action = wezterm.action.EmitEvent("toggle-fullscreen-padding") },
+  },
+		},
 	-- Font settings (adjust as needed)
 	font = wezterm.font("JetBrains Mono"), -- Change this to your preferred font
 	font_size = 12.0, -- Adjust the font size

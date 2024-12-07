@@ -60,6 +60,7 @@ vim.keymap.set("t", "<C-q>", "exit<CR>", { noremap = true, silent = true, desc =
 -- Compile
 vim.keymap.set("n", "<leader>cc", "<cmd>CompPls<CR>", { noremap = true, silent = true, desc = "Compile" })
 vim.keymap.set("n", "<leader>cs", "<cmd>ShellPls<CR>", { noremap = true, silent = true, desc = "Shell Command" })
+vim.keymap.set("n", "<leader>cq", "<cmd>SilentPls<CR>", { noremap = true, silent = true, desc = "Shell Command" })
 
 -- TIP: Disable arrow keys in normal mode
 vim.keymap.set("n", "<left>", '<cmd>echo "Use h to move!!"<CR>')
@@ -565,17 +566,17 @@ require("lazy").setup({
 			})
 		end,
 	},
-		{
-  "https://git.sr.ht/~swaits/scratch.nvim",
-  lazy = true,
-  keys = {
-    { "<leader>bs", "<cmd>Scratch<cr>", desc = "Scratch Buffer", mode = "n" },
-    { "<leader>bS", "<cmd>ScratchSplit<cr>", desc = "Scratch Buffer (split)", mode = "n" },
-  },
-  cmd = {
-    "Scratch",
-    "ScratchSplit",
-  },
-  opts = {},
-}
+	{
+		"https://git.sr.ht/~swaits/scratch.nvim",
+		lazy = true,
+		keys = {
+			{ "<leader>bs", "<cmd>Scratch<cr>", desc = "Scratch Buffer", mode = "n" },
+			{ "<leader>bS", "<cmd>ScratchSplit<cr>", desc = "Scratch Buffer (split)", mode = "n" },
+		},
+		cmd = {
+			"Scratch",
+			"ScratchSplit",
+		},
+		opts = {},
+	},
 })

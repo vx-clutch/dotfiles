@@ -58,9 +58,8 @@ vim.keymap.set("t", "<C-space>", "exit<CR><CR>", { noremap = true, silent = true
 vim.keymap.set("t", "<C-q>", "exit<CR>", { noremap = true, silent = true, desc = "Close Terminal" })
 
 -- Compile
-vim.keymap.set("n", "<leader>cc", "<cmd>CompPls<CR>", { noremap = true, silent = true, desc = "Compile" })
-vim.keymap.set("n", "<leader>cs", "<cmd>ShellPls<CR>", { noremap = true, silent = true, desc = "Shell Command" })
-vim.keymap.set("n", "<leader>cq", "<cmd>SilentPls<CR>", { noremap = true, silent = true, desc = "Shell Command" })
+vim.keymap.set("n", "<leader>cc", "<cmd>Compile<CR>", { noremap = true, silent = true, desc = "Compile" })
+vim.keymap.set("n", "<leader>rc", "<cmd>Recompile<CR>", { noremap = true, silent = true, desc = "Recompile" })
 
 -- TIP: Disable arrow keys in normal mode
 vim.keymap.set("n", "<left>", '<cmd>echo "Use h to move!!"<CR>')
@@ -552,12 +551,6 @@ require("lazy").setup({
 		"ckarnell/Antonys-macro-repeater",
 	},
 	{
-		"vx-clutch/comppls.nvim",
-		config = function()
-			require("comppls").setup()
-		end,
-	},
-	{
 		"norcalli/nvim-colorizer.lua",
 		config = function()
 			require("colorizer").setup({
@@ -578,5 +571,16 @@ require("lazy").setup({
 			"ScratchSplit",
 		},
 		opts = {},
+	},
+	{
+		"ej-shafran/compile-mode.nvim",
+		branch = "nightly",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+		},
+		config = function()
+			---@type CompileModeOpts
+			vim.g.compile_mode = {}
+		end,
 	},
 })

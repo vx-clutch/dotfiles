@@ -51,12 +51,6 @@ vim.keymap.set(
 	{ noremap = true, silent = true, desc = "File navigation" }
 )
 
--- Terminal Navigation
-vim.keymap.set("n", "<leader>t", "<cmd>sp | term<CR>i", { noremap = true, silent = true, desc = "Open terminal" })
-vim.keymap.set("n", "<leader><leader>t", "<cmd>term<CR>i", { noremap = true, silent = true, desc = "Open terminal" })
-vim.keymap.set("t", "<C-space>", "exit<CR><CR>", { noremap = true, silent = true, desc = "Close Terminal" })
-vim.keymap.set("t", "<C-q>", "exit<CR>", { noremap = true, silent = true, desc = "Close Terminal" })
-
 -- Compile
 vim.keymap.set("n", "<leader>cc", "<cmd>Compile<CR>", { noremap = true, silent = true, desc = "Compile" })
 vim.keymap.set("n", "<leader>rc", "<cmd>Recompile<CR>", { noremap = true, silent = true, desc = "Recompile" })
@@ -560,19 +554,6 @@ require("lazy").setup({
 		end,
 	},
 	{
-		"https://git.sr.ht/~swaits/scratch.nvim",
-		lazy = true,
-		keys = {
-			{ "<leader>bs", "<cmd>Scratch<cr>", desc = "Scratch Buffer", mode = "n" },
-			{ "<leader>bS", "<cmd>ScratchSplit<cr>", desc = "Scratch Buffer (split)", mode = "n" },
-		},
-		cmd = {
-			"Scratch",
-			"ScratchSplit",
-		},
-		opts = {},
-	},
-	{
 		"ej-shafran/compile-mode.nvim",
 		branch = "nightly",
 		dependencies = {
@@ -581,6 +562,25 @@ require("lazy").setup({
 		config = function()
 			---@type CompileModeOpts
 			vim.g.compile_mode = {}
+		end,
+	},
+	{
+		"folke/snacks.nvim",
+		priority = 1000,
+		lazy = false,
+		opts = {
+			bigfile = { enabled = true },
+			quickfile = { enabled = true },
+			terminal = { enabled = true },
+			lazygit = { enabled = true },
+		},
+		config = function()
+			vim.keymap.set("n", "<leader>lg", function()
+				Snacks.lazygit()
+			end, { noremap = true, silent = true, desc = "Open LazyGit" })
+			vim.keymap.set("n", "<leader>t", function()
+				Snacks.terminal()
+			end, { noremap = true, silent = true, desc = "Open terminal" })
 		end,
 	},
 })

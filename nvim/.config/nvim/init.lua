@@ -54,6 +54,12 @@ vim.keymap.set(
 -- Compile
 vim.keymap.set("n", "<leader>cc", "<cmd>Compile<CR>", { noremap = true, silent = true, desc = "Compile" })
 vim.keymap.set("n", "<leader>rc", "<cmd>Recompile<CR>", { noremap = true, silent = true, desc = "Recompile" })
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "compilation",
+	callback = function()
+		vim.keymap.set("n", "<C-c>", ":quit<CR>", { buffer = true })
+	end,
+})
 
 -- TIP: Disable arrow keys in normal mode
 vim.keymap.set("n", "<left>", '<cmd>echo "Use h to move!!"<CR>')

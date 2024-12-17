@@ -9,11 +9,6 @@ alias b='bat --paging=always'
 alias t='tldrb'
 alias nv='nvim'
 alias gg='lazygit'
-alias k='kubectl'
-
-function tb {
-  tldr $1 | b
-}
 
 [ -f "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh" ] && source "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh"
 plug "zsh-users/zsh-autosuggestions"

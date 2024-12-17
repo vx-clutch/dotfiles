@@ -50,5 +50,9 @@ function retake() {
   rm -rf $1 && mkdir $1 && cd $1
 }
 
+function clip() {
+  cat $1 | clip.exe
+}
+
 # Motd logic
 clear; cal; cat ~/.motd

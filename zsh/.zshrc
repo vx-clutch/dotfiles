@@ -39,7 +39,7 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 function qs() {
   git add .
-  git commit -m "$1"
+  git commit -m "save"
   git push
 }
 

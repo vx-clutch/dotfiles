@@ -4,15 +4,9 @@ vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '>-2<CR>gv=gv")
 vim.keymap.set("n", "-", "<cmd>Oil<CR>", { noremap = true, silent = true, desc = "Open Oil" })
 
--- Compile
-vim.keymap.set("n", "<leader>cc", "<cmd>Compile<CR>", { noremap = true, silent = true, desc = "Compile" })
-vim.keymap.set("n", "<leader>rc", "<cmd>Recompile<CR>", { noremap = true, silent = true, desc = "Recompile" })
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = "compilation",
-	callback = function()
-		vim.keymap.set("n", "<C-c>", ":quit<CR>", { buffer = true })
-	end,
-})
+vim.keymap.set("n", "<leader>m", ":make<CR>", { noremap = true, silent = false, desc = "Make" })
+vim.keymap.set("n", "<leader>t", ":below term<CR>i", { noremap = true, silent = true, desc = "Open Terminal Split" })
+vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-m>", { noremap = true, silent = true, desc = "Go from Terminal mode to Normal mode" })
 
 -- Disable arrow keys in normal mode
 vim.keymap.set("n", "<left>", '<cmd>echo "Use h to move!!"<CR>')

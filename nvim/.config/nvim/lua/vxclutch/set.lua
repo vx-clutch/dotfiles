@@ -32,3 +32,13 @@ vim.opt.colorcolumn = "127"
 
 vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+
+vim.api.nvim_set_hl(0, 'TabLine', { fg = 'NONE', bg = 'NONE', underline = false })
+vim.api.nvim_set_hl(0, 'TabLineSel', { fg = 'NONE', bg = 'NONE', underline = false })
+vim.api.nvim_set_hl(0, 'TabLineFill', { fg = 'NONE', bg = 'NONE' })
+vim.cmd [[
+    highlight TabLine guibg=NONE guifg=NONE gui=NONE
+    highlight TabLineSel guibg=NONE guifg=NONE gui=NONE
+    highlight TabLineFill guibg=NONE guifg=NONE gui=NONE
+]]
+

@@ -22,3 +22,6 @@ vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper win
 -- DAP
 vim.keymap.set("n", "<leader>b", ":DapToggleBreakpoint<CR>", { noremap = true, silent = true, desc = "Toggle Breakpoint" })
 vim.keymap.set("n", "<leader>db", ":DapContinue<CR>", { noremap = true, silent = true, desc = "Start or Contine the Debugger" })
+
+-- Theme
+vim.keymap.set("n", "<leader><C-t>", ":Themery<CR>", { noremap = true, silent = false, desc = "Change the current theme" })

@@ -3,6 +3,10 @@ return {
 		requires = { "kyazdani42/nvim-web-devicons" },
     dependencies = {
       "norcalli/nvim-colorizer.lua",
+			"zaldih/themery.nvim",
+			"FrenzyExists/aquarium-vim",
+			"vague2k/vague.nvim",
+			"catppuccin/nvim",
     },
 		config = function()
 			require("lualine").setup({
@@ -27,6 +31,10 @@ return {
 			require("colorizer").setup({
 				"*",
 				css = { rgb_fn = true },
+			})
+			require("themery").setup({
+  			themes = {"aquarium", "vague", "catppuccin-mocha"},
+  			livePreview = true,
 			})
 		end,
 }

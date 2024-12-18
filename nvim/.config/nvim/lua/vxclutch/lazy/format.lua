@@ -1,8 +1,8 @@
 return {
 	"stevearc/conform.nvim",
-  dependencies = {
-    "tpope/vim-sleuth"
-  },
+	dependencies = {
+		"tpope/vim-sleuth",
+	},
 	event = { "BufWritePre" },
 	cmd = { "ConformInfo" },
 	keys = {

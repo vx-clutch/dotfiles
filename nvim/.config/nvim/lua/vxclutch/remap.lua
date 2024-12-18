@@ -8,6 +8,9 @@ vim.keymap.set("n", "<leader>m", ":make<CR>", { noremap = true, silent = false, 
 vim.keymap.set("n", "<leader>t", ":below term<CR>i", { noremap = true, silent = true, desc = "Open Terminal Split" })
 vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-m>", { noremap = true, silent = true, desc = "Go from Terminal mode to Normal mode" })
 
+-- LSP
+vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { noremap = true, silent = true, desc = "Go to definition" })
+
 -- Disable arrow keys in normal mode
 vim.keymap.set("n", "<left>", '<cmd>echo "Use h to move!!"<CR>')
 vim.keymap.set("n", "<right>", '<cmd>echo "Use l to move!!"<CR>')

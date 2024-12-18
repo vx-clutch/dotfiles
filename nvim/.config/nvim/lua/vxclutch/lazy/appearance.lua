@@ -2,7 +2,9 @@ return {
 	"nvim-lualine/lualine.nvim",
 	requires = { "kyazdani42/nvim-web-devicons" },
 	dependencies = {
+		"stevearc/dressing.nvim",
 		"norcalli/nvim-colorizer.lua",
+		"rktjmp/lush.nvim",
 		"zaldih/themery.nvim",
 		"FrenzyExists/aquarium-vim",
 		"vague2k/vague.nvim",
@@ -11,6 +13,7 @@ return {
 		"shaunsingh/nord.nvim",
 		"rose-pine/neovim",
 		"folke/tokyonight.nvim",
+		"uloco/bluloco.nvim"
 	},
 	config = function()
 		require("lualine").setup({
@@ -36,6 +39,11 @@ return {
 			"*",
 			css = { rgb_fn = true },
 		})
+		require("dressing").setup({
+			select = {
+				backend = { "nui", "telescope", "builtin" }
+			}
+		})
 		require("themery").setup({
 			themes = {
 				"aquarium",
@@ -47,6 +55,7 @@ return {
 				"nord",
 				"rose-pine",
 				"tokyonight",
+				"bluloco-dark",
 			},
 			livePreview = true,
 		})

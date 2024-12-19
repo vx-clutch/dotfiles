@@ -6,6 +6,7 @@ return {
 		"norcalli/nvim-colorizer.lua",
 		"rktjmp/lush.nvim",
 		"zaldih/themery.nvim",
+		-- themes
 		"FrenzyExists/aquarium-vim",
 		"vague2k/vague.nvim",
 		"catppuccin/nvim",

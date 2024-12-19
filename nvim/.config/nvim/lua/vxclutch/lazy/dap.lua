@@ -6,6 +6,8 @@ return {
 			"rcarriga/nvim-dap-ui",
 			"nvim-neotest/nvim-nio",
 			"williamboman/mason.nvim",
+			"julianolf/nvim-dap-lldb",
+			"mfussenegger/nvim-python-dap",
 		},
 		config = function()
 			local dap = require("dap")
@@ -13,6 +15,9 @@ return {
 
 			require("dapui").setup()
 			require("dap-go").setup()
+			require("dap-python").setup()
+			require("dap-lldb").setup()
+
 
 			-- Handled by nvim-dap-go
 			-- dap.adapters.go = {

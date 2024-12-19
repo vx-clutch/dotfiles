@@ -1,4 +1,4 @@
-return {
+return {{
   "nvim-lualine/lualine.nvim",
   requires = { "kyazdani42/nvim-web-devicons" },
   dependencies = {
@@ -6,15 +6,7 @@ return {
     "norcalli/nvim-colorizer.lua",
     "rktjmp/lush.nvim",
     "zaldih/themery.nvim",
-    -- themes
-    "FrenzyExists/aquarium-vim",
-    "vague2k/vague.nvim",
-    "catppuccin/nvim",
-    "morhetz/gruvbox",
-    "shaunsingh/nord.nvim",
-    "rose-pine/neovim",
-    "folke/tokyonight.nvim",
-    "uloco/bluloco.nvim",
+
   },
   config = function()
     require("lualine").setup {
@@ -61,4 +53,16 @@ return {
       livePreview = true,
     }
   end,
+},
+  {
+        -- themes
+    "FrenzyExists/aquarium-vim",
+    "vague2k/vague.nvim",
+    "catppuccin/nvim",
+    "morhetz/gruvbox",
+    "shaunsingh/nord.nvim",
+    "rose-pine/neovim",
+    "folke/tokyonight.nvim",
+    "uloco/bluloco.nvim",
+  }
 }

@@ -28,11 +28,11 @@ return {
       --   },
       -- }
 
-      dap.adapters.lldb = {
-        type = "executable",
-        command = "/usr/bin/lldb", -- Adjust path if necessary
-        name = "lldb",
-      }
+      -- dap.adapters.lldb = {
+      --   type = "executable",
+      --   command = "/usr/bin/lldb", -- Adjust path if necessary
+      --   name = "lldb",
+      -- }
 
       dap.configurations.cpp = {
         {

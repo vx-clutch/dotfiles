@@ -16,7 +16,7 @@ return {
       require("dapui").setup()
       require("dap-go").setup()
       require("dap-python").setup()
-      require("dap-lldb").setup()
+      -- require("dap-lldb").setup()
 
       -- Handled by nvim-dap-go
       -- dap.adapters.go = {

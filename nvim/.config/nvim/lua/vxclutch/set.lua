@@ -1,34 +1,27 @@
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
-vim.opt.number = true
-vim.opt.mouse = "a"
-vim.opt.showmode = false
-vim.opt.breakindent = true
-vim.opt.undofile = true
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
-vim.opt.signcolumn = "yes"
-vim.opt.updatetime = 250
-vim.opt.timeoutlen = 300
-vim.opt.splitright = true
-vim.opt.splitbelow = true
-vim.opt.inccommand = "split"
-vim.opt.cursorline = true
-vim.opt.scrolloff = 8
-vim.opt.tabstop = 2
-vim.opt.shiftwidth = 2
-vim.opt.expandtab = true
-vim.bo.softtabstop = 2
-vim.opt.termguicolors = true
-vim.opt.guicursor = ""
-vim.opt.nu = true
-vim.opt.relativenumber = true
-vim.opt.wrap = false
-vim.opt.smartindent = true
-vim.opt.swapfile = false
-vim.opt.scrolloff = 8
-vim.opt.updatetime = 50
-vim.opt.colorcolumn = "127"
+local opt = vim.opt
 
-vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+-- command mode --
+opt.inccommand = "split"
+opt.smartcase = true
+opt.ignorecase = true
+
+-- line numbers --
+opt.number = true
+opt.relativenumber = true
+
+-- splits --
+opt.splitbelow = true
+opt.splitright = true
+
+-- opt.shiftwidth = 2 --
+opt.shiftwidth = 2
+
+-- cursor --
+opt.cursorline = true
+opt.guicursor = ""
+opt.scrolloff = 8
+
+-- format --
+opt.formatoptions:remove "o"
+opt.signcolumn = "yes"
+opt.termguicolors = true

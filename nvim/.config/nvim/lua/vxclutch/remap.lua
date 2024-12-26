@@ -1,10 +1,17 @@
+-- remove search highlight --
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
+-- move lines --
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '>-2<CR>gv=gv")
+
+-- file navigation --
 vim.keymap.set("n", "-", "<cmd>Oil<CR>", { noremap = true, silent = true, desc = "Open Oil" })
 
+-- compile --
 vim.keymap.set("n", "<leader>m", ":make<CR>", { noremap = true, silent = false, desc = "Make" })
+
+-- terminal --
 vim.keymap.set("n", "<leader>t", ":below term<CR>i", { noremap = true, silent = true, desc = "Open Terminal Split" })
 vim.keymap.set(
 	"t",
@@ -12,6 +19,10 @@ vim.keymap.set(
 	"<C-\\><C-m>",
 	{ noremap = true, silent = true, desc = "Go from Terminal mode to Normal mode" }
 )
+
+-- Exec
+vim.keymap.set("n", "<leader>x", "<cmd>.lua<CR>", { desc = "Execute the current line" })
+vim.keymap.set("n", "<leader><leader>x", "<cmd>source %<CR>", { desc = "Execute the current file" })
 
 -- LSP
 vim.keymap.set("n", "gd", vim.lsp.buf.definition, { noremap = true, silent = true, desc = "Go to definition" })
@@ -22,6 +33,7 @@ vim.keymap.set("n", "<left>", '<cmd>echo "Use h to move!!"<CR>')
 vim.keymap.set("n", "<right>", '<cmd>echo "Use l to move!!"<CR>')
 vim.keymap.set("n", "<up>", '<cmd>echo "Use k to move!!"<CR>')
 vim.keymap.set("n", "<down>", '<cmd>echo "Use j to move!!"<CR>')
+
 -- Window Controls
 vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
 vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })

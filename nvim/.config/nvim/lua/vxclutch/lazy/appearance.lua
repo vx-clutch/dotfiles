@@ -49,6 +49,9 @@ return {
           "rose-pine",
           "tokyonight",
           "bluloco-dark",
+          "vesper",
+          "poimandres",
+          "oxocarbon",
         },
         livePreview = true,
       }
@@ -64,5 +67,8 @@ return {
     "rose-pine/neovim",
     "folke/tokyonight.nvim",
     "uloco/bluloco.nvim",
+    "gambhirsharma/vesper.nvim",
+    "olivercederborg/poimandres.nvim",
+    "nyoom-engineering/oxocarbon.nvim",
   },
 }

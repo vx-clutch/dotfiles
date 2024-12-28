@@ -13,8 +13,10 @@ opt.relativenumber = true
 opt.splitbelow = true
 opt.splitright = true
 
--- opt.shiftwidth = 2 --
+-- tabs --
 opt.shiftwidth = 2
+opt.tabstop = 2
+opt.expandtab = true
 
 -- cursor --
 opt.cursorline = true
@@ -25,3 +27,4 @@ opt.scrolloff = 8
 opt.formatoptions:remove "o"
 opt.signcolumn = "yes"
 opt.termguicolors = true
+opt.colorcolumn = "80"

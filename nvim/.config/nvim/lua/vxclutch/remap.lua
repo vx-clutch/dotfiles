@@ -17,6 +17,7 @@ set("n", "<leader>rc", ":Recompile<CR>", { noremap = true, silent = false, desc 
 
 -- terminal --
 set("n", "<leader>t", ":below term<CR>i", { noremap = true, silent = true, desc = "Open Terminal Split" })
+set("t", "<Esc><Esc>", "<C-\\><C-n>", { noremap = true, silent = true, desc = "Exit terminal and goto normal mode" })
 
 -- Exec
 set("n", "<leader>x", "<cmd>.lua<CR>", { desc = "Execute the current line" })

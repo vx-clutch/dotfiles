@@ -10,11 +10,6 @@ set("v", "K", ":m '>-2<CR>gv=gv")
 -- file navigation --
 set("n", "-", "<cmd>Oil<CR>", { noremap = true, silent = true, desc = "Open Oil" })
 
--- compile --
-set("n", "<leader>m", ":make<CR>", { noremap = true, silent = false, desc = "Make" })
-set("n", "<leader>cc", ":Compile<CR>", { noremap = true, silent = false, desc = "Compile" })
-set("n", "<leader>rc", ":Recompile<CR>", { noremap = true, silent = false, desc = "Recompile" })
-
 -- terminal --
 set("n", "<leader>t", ":below term<CR>i", { noremap = true, silent = true, desc = "Open Terminal Split" })
 set("t", "<Esc><Esc>", "<C-\\><C-n>", { noremap = true, silent = true, desc = "Exit terminal and goto normal mode" })

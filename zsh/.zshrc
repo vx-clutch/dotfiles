@@ -49,5 +49,4 @@ function clip() {
   cat $1 | clip.exe
 }
 
-# Motd logic
-clear; cal; cat ~/.motd
+fastfetch

@@ -24,7 +24,8 @@ opt.guicursor = ""
 opt.scrolloff = 8
 
 -- format --
-opt.formatoptions:remove "o"
+vim.cmd('autocmd BufEnter * set formatoptions-=cro')
+vim.cmd('autocmd BufEnter * setlocal formatoptions-=cro')
 opt.signcolumn = "yes"
 opt.termguicolors = true
 opt.colorcolumn = "80"

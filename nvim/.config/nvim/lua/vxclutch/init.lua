@@ -1,13 +1,11 @@
 vim.g.mapleader = " "
 
 -- https://github.com/vx-clutch/ftl
-vim.api.nvim_create_autocmd({"BufNewFile", "BufRead"}, {
-    pattern = "*.ftl",
-    callback = function()
-        vim.bo.filetype = "c"
-    end,
-})
-
+vim.filetype.add {
+  extension = {
+    ftl = "ftl",
+  },
+}
 
 require "vxclutch.set"
 require "vxclutch.lazy_init"

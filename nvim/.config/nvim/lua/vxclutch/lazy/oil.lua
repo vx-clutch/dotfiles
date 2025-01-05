@@ -22,18 +22,6 @@ return {
       },
     }
 
-    -- vim.api.nvim_create_autocmd("FileType", {
-    --   pattern = "oil",
-    --   callback = function()
-    --     vim.api.nvim_buf_set_keymap(0, "n", function()
-    --       local cursor_line = vim.api.nvim_get_current_line()
-    --       if string.sub(cursor_line, -1) == "/" then
-    --         vim.cmd("silent! cd " .. cursor_line)
-    --       end
-    --     end, { noremap = true, silent = true })
-    --   end,
-    -- })
-
     -- File navigation split with Oil
     vim.api.nvim_create_user_command("Pick", function()
       local origin_buf = vim.fn.bufnr()

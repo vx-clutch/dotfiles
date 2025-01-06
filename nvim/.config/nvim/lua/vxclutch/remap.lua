@@ -1,29 +1,35 @@
-local set = vim.keymap.set
+local function map(mode, lhs, rhs, opts)
+	local options = { noremap = true, silent = true }
+	if opts then
+		options = vim.tbl_extend("force", options, opts)
+	end
+	vim.keymap.set(mode, lhs, rhs, options)
+end
 
 -- remove search highlight --
-set("n", "<Esc>", ":nohlsearch<CR>")
+map("n", "<Esc>", ":nohlsearch<CR>")
 
 -- move lines --
-set("v", "J", ":m '>+1<CR>gv=gv")
-set("v", "K", ":m '>-2<CR>gv=gv")
+map("v", "J", ":m '>+1<CR>gv=gv")
+map("v", "K", ":m '>-2<CR>gv=gv")
 
 -- file navigation --
-set("n", "-", ":Oil<CR>", { noremap = true, silent = true, desc = "Open Oil" })
+map("n", "-", ":Oil<CR>")
 
 -- terminal --
-set("n", "<leader>t", ":below term<CR>i", { noremap = true, silent = true, desc = "Open Terminal Split" })
-set("t", "<Esc><Esc>", "<C-\\><C-n>", { noremap = true, silent = true, desc = "Exit terminal and goto normal mode" })
+map("n", "<leader>t", "<C-z>")
+map("t", "<Esc><Esc>", "<C-\\><C-n>")
 
 -- Exec
-set("n", "<leader>x", ":.lua<CR>", { desc = "Execute the current line" })
-set("n", "<leader><leader>x", ":source %<CR>", { desc = "Execute the current file" })
+map("n", "<leader>x", ":.lua<CR>")
+map("n", "<leader><leader>x", ":source %<CR>")
 
 -- LSP
-set("n", "gd", vim.lsp.buf.definition, { noremap = true, silent = true, desc = "Go to definition" })
-set("n", "<leader>rn", vim.lsp.buf.rename, { noremap = true, silent = true, desc = "Go to definition" })
+map("n", "gd", vim.lsp.buf.definition)
+map("n", "<leader>rn", vim.lsp.buf.rename, { noremap = true, silent = true, desc = "Go to definition" })
 
 -- Window Controls
-set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
-set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
-set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
-set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
+map("n", "<C-h>", "<C-w><C-h>")
+map("n", "<C-l>", "<C-w><C-l>")
+map("n", "<C-j>", "<C-w><C-j>")
+map("n", "<C-k>", "<C-w><C-k>")

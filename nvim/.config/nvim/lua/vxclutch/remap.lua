@@ -13,6 +13,10 @@ map("n", "<Esc>", ":nohlsearch<CR>")
 map("v", "J", ":m '>+1<CR>gv=gv")
 map("v", "K", ":m '>-2<CR>gv=gv")
 
+-- scrolling --
+map("n", "<C-d>", "<C-d>zz")
+map("n", "<C-u>", "<C-u>zz")
+
 -- file navigation --
 map("n", "-", ":Oil<CR>")
 

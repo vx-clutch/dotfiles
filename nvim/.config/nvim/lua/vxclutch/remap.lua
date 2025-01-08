@@ -21,8 +21,7 @@ map("n", "<C-u>", "<C-u>zz")
 map("n", "-", ":Oil<CR>")
 
 -- terminal --
-map("n", "<leader>t", "<C-z>")
-map("t", "<Esc><Esc>", "<C-\\><C-n>")
+map("t", "<C-k>", "<C-\\><C-n><C-w><C-k>")
 
 -- Exec
 map("n", "<leader>x", ":.lua<CR>")

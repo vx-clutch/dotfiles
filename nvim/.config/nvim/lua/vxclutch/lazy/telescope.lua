@@ -35,12 +35,7 @@ return {
     vim.keymap.set("n", "<space>fg", builtin.live_grep)
     vim.keymap.set("n", "<space>/", builtin.current_buffer_fuzzy_find)
 
-    vim.keymap.set("n", "<space>gw", builtin.grep_string)
-
-    vim.keymap.set("n", "<space>fa", function()
-      ---@diagnostic disable-next-line: param-type-mismatch
-      builtin.find_files { cwd = vim.fs.joinpath(vim.fn.stdpath "data", "lazy") }
-    end)
+    vim.keymap.set("n", "<space>fw", builtin.grep_string)
 
     vim.keymap.set("n", "<space>fn", function()
       builtin.find_files { cwd = vim.fn.stdpath "config" }

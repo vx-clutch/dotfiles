@@ -1,26 +1,26 @@
 local function map(mode, lhs, rhs, opts)
-	local options = { noremap = true, silent = true }
-	if opts then
-		options = vim.tbl_extend("force", options, opts)
-	end
-	vim.keymap.set(mode, lhs, rhs, options)
+  local options = { noremap = true, silent = true }
+  if opts then
+    options = vim.tbl_extend("force", options, opts)
+  end
+  vim.keymap.set(mode, lhs, rhs, options)
 end
 
--- remove search highlight --
+-- Remove search highlight --
 map("n", "<Esc>", ":nohlsearch<CR>")
 
--- move lines --
+-- Move lines --
 map("v", "J", ":m '>+1<CR>gv=gv")
 map("v", "K", ":m '>-2<CR>gv=gv")
 
--- scrolling --
+-- Scrolling --
 map("n", "<C-d>", "<C-d>zz")
 map("n", "<C-u>", "<C-u>zz")
 
--- file navigation --
+-- Tile navigation --
 map("n", "-", ":Oil<CR>")
 
--- terminal --
+-- Terminal --
 map("t", "<C-k>", "<C-\\><C-n><C-w><C-k>")
 
 -- Exec
@@ -36,3 +36,15 @@ map("n", "<C-h>", "<C-w><C-h>")
 map("n", "<C-l>", "<C-w><C-l>")
 map("n", "<C-j>", "<C-w><C-j>")
 map("n", "<C-k>", "<C-w><C-k>")
+
+-- Shell
+function Shell()
+  vim.ui.input({ prompt = "Shell: " }, function(input)
+    if input then
+      local sanitized_input = vim.fn.shellescape(input)
+      vim.cmd("!" .. sanitized_input)
+    end
+  end)
+end
+
+vim.api.nvim_create_user_command("Shell", Shell, {})

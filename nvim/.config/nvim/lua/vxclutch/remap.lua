@@ -36,15 +36,3 @@ map("n", "<C-h>", "<C-w><C-h>")
 map("n", "<C-l>", "<C-w><C-l>")
 map("n", "<C-j>", "<C-w><C-j>")
 map("n", "<C-k>", "<C-w><C-k>")
-
--- Shell
-function Shell()
-  vim.ui.input({ prompt = "Shell: " }, function(input)
-    if input then
-      local sanitized_input = vim.fn.shellescape(input)
-      vim.cmd("!" .. sanitized_input)
-    end
-  end)
-end
-
-vim.api.nvim_create_user_command("Shell", Shell, {})

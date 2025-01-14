@@ -32,12 +32,6 @@ export PATH=$JAVA_HOME/bin:$PATH
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
-function qs() {
-  git add .
-  git commit -m "save"
-  git push
-}
-
 function take() {
   mkdir $1 && cd $1
 }
@@ -48,5 +42,3 @@ function retake() {
 function clip() {
   cat $1 | clip.exe
 }
-
-fastfetch

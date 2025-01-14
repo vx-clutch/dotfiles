@@ -53,7 +53,7 @@ config.colors = {
 }
 
 config.font = wezterm.font("Iosevka") -- Match font as close as possible
-config.font_size = 22.0 -- Slightly reduced size for a compact view
+config.font_size = 18.0 -- Slightly reduced size for a compact view
 config.line_height = 1.1 -- Adjusted line height
 
 return config

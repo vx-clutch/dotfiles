@@ -22,38 +22,38 @@ config.window_padding = {
     bottom = 0,
 }
 
-config.color_scheme = "Vague"
+-- Adjusted colors for similarity to the image
 config.colors = {
-    background = '#18191a',
-    foreground = '#abb2bf',
-    cursor_bg = '#61afef',
-    cursor_fg = '#282c34',
-    cursor_border = '#61afef',
+    background = '#000000', -- Darker background
+    foreground = '#c0caf5', -- Light foreground
+    cursor_bg = '#c0caf5',  -- Cursor color
+    cursor_fg = '#0f111a',
+    cursor_border = '#c0caf5',
 
     ansi = {
-        '#282c34',  -- black
-        '#e06c75',  -- red
-        '#98c379',  -- green
-        '#e5c07b',  -- yellow
-        '#61afef',  -- blue
-        '#c678dd',  -- magenta
-        '#56b6c2',  -- cyan
-        '#ffffff',  -- white
+        '#32344a',  -- black
+        '#f7768e',  -- red
+        '#9ece6a',  -- green
+        '#e0af68',  -- yellow
+        '#7aa2f7',  -- blue
+        '#bb9af7',  -- magenta
+        '#7dcfff',  -- cyan
+        '#a9b1d6',  -- white
     },
     brights = {
-        '#5c6370',  -- bright black
-        '#e06c75',  -- bright red
-        '#98c379',  -- bright green
-        '#e5c07b',  -- bright yellow
-        '#61afef',  -- bright blue
-        '#c678dd',  -- bright magenta
-        '#56b6c2',  -- bright cyan
-        '#ffffff',  -- bright white
+        '#444b6a',  -- bright black
+        '#ff7a93',  -- bright red
+        '#b9f27c',  -- bright green
+        '#ff9e64',  -- bright yellow
+        '#7da6ff',  -- bright blue
+        '#c69ff7',  -- bright magenta
+        '#7dcfff',  -- bright cyan
+        '#c0caf5',  -- bright white
     },
 }
 
-config.font = wezterm.font("Iosevka Slab")  -- Change this to your preferred font
-config.font_size = 24.0  -- Adjust the font size
-config.line_height = 1.2  -- Adjust the line height
+config.font = wezterm.font("Iosevka") -- Match font as close as possible
+config.font_size = 22.0 -- Slightly reduced size for a compact view
+config.line_height = 1.1 -- Adjusted line height
 
 return config

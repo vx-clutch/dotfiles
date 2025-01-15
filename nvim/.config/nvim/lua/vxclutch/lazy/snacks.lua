@@ -1,7 +1,7 @@
 return {
   -- this is a sort of related
   {
-    "stevearc/dressing.nvim"
+    "stevearc/dressing.nvim",
   },
   {
     "folke/snacks.nvim",

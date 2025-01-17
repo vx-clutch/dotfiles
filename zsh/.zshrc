@@ -42,3 +42,5 @@ function retake() {
 function clip() {
   cat $1 | clip.exe
 }
+
+if [ "$TMUX" = "" ]; then tmux; fi

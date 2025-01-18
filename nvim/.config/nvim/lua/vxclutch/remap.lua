@@ -1,3 +1,5 @@
+vim.g.mapleader = " "
+
 local function map(mode, lhs, rhs, opts)
   local options = { noremap = true, silent = true }
   if opts then
@@ -17,8 +19,8 @@ map("v", "K", ":m '>-2<CR>gv=gv")
 map("n", "<C-d>", "<C-d>zz")
 map("n", "<C-u>", "<C-u>zz")
 
--- Tile navigation --
-map("n", "-", ":Oil<CR>")
+-- File navigation --
+map("n", "<leader>pv", ":Oil<CR>")
 
 -- Terminal --
 map("t", "<C-k>", "<C-\\><C-n><C-w><C-k>")

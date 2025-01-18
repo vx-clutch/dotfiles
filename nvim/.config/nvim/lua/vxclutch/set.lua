@@ -19,7 +19,6 @@ opt.tabstop = 2
 opt.expandtab = true
 
 -- cursor --
-opt.cursorline = true
 opt.guicursor = ""
 opt.scrolloff = 8
 
@@ -29,3 +28,10 @@ vim.cmd('autocmd BufEnter * setlocal formatoptions-=cro')
 opt.signcolumn = "yes"
 opt.termguicolors = true
 opt.colorcolumn = "80"
+opt.wrap = false
+
+-- Changes --
+vim.opt.swapfile = false
+vim.opt.backup = false
+vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+vim.opt.undofile = true

@@ -1,7 +1,19 @@
-vim.g.mapleader = " "
+require("vxclutch.set")
+require("vxclutch.remap")
+require("vxclutch.lazy_init")
 
-require "vxclutch.set"
-require "vxclutch.lazy_init"
-require "vxclutch.remap"
-vim.api.nvim_set_hl(0, "Function", { bold = false }) -- Must be called last.
-require("nvim-colorizer").setup()
+
+local augroup = vim.api.nvim_create_augroup
+local autocmd = vim.api.nvim_create_autocmd
+local VxclutchGroup = augroup('Vxclutch', {})
+
+autocmd('BufEnter', {
+    group = VxclutchGroup,
+    callback = function()
+        if vim.bo.filetype == "zig" then
+            vim.cmd.colorscheme("tokyonight-night")
+        else
+            vim.cmd.colorscheme("rose-pine-moon")
+        end
+    end
+})

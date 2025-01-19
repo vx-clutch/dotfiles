@@ -30,6 +30,9 @@ export PATH=$PATH:/mnt/c/ProgramData/chocolatey/lib/mpvio.install/tools/mpv.exe
 export JAVA_HOME=/usr/lib/jvm/java-11-openjdk
 export PATH=$JAVA_HOME/bin:$PATH
 
+export TERM="xterm-256color"
+export COLORTERM=truecolor
+
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 function take() {

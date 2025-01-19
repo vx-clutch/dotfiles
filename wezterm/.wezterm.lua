@@ -58,6 +58,5 @@ config.color_schemes = {
 
 config.font = wezterm.font("Iosevka Slab")
 config.font_size = 18.0
-config.line_height = 1.1
 
 return config

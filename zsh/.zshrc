@@ -9,6 +9,7 @@ alias b='bat --paging=always'
 alias t='tldrb'
 alias nv='nvim'
 alias gg='lazygit'
+alias signout='loginctl terminate-user $USER'
 
 [ -f "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh" ] && source "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh"
 plug "zsh-users/zsh-autosuggestions"

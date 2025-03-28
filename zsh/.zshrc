@@ -1,12 +1,11 @@
 export EDITOR=nvim
 export SUDO_EDITOR=nvim
 export VISUAL=nvim
+
 alias ls='ls --color=auto'
 alias ll='ls -lah'
 alias ff='fastfetch'
 alias apt='nala'
-alias b='bat --paging=always'
-alias t='tldrb'
 alias nv='nvim'
 alias gg='lazygit'
 alias signout='loginctl terminate-user $USER'
@@ -19,6 +18,12 @@ plug "zsh-users/zsh-syntax-highlighting"
 plug "zap-zsh/sudo"
 plug "zsh-users/zsh-history-substring-search"
 plug "Aloxaf/fzf-tab"
+
+if ls --color=auto &>/dev/null; then
+	alias ls='ls -p --color=auto'
+else
+	alias ls='ls -p -G'
+fi
 
 autoload -Uz compinit
 compinit
@@ -36,24 +41,15 @@ export COLORTERM=truecolor
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
-function take() {
+take() {
   mkdir $1 && cd $1
 }
-function retake() {
-  rm -rf $1 && mkdir $1 && cd $1
-}
 
-function clip() {
+clip() {
   cat $1 | clip.exe
 }
 
-function y() {
-	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
-	yazi "$@" --cwd-file="$tmp"
-	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-		builtin cd -- "$cwd"
-	fi
-	rm -f -- "$tmp"
-}
+alias hl='rg --passthru'
+alias gerp='rg'
 
 if [ "$TMUX" = "" ]; then tmux; fi

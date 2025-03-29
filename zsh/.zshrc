@@ -9,6 +9,7 @@ alias apt='nala'
 alias nv='nvim'
 alias gg='lazygit'
 alias signout='loginctl terminate-user $USER'
+alias ..='echo "cd .."; cd ..'
 
 [ -f "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh" ] && source "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh"
 plug "zsh-users/zsh-autosuggestions"

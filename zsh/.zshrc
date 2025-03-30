@@ -1,7 +1,9 @@
+# Set the default editor to Neovim
 export EDITOR=nvim
 export SUDO_EDITOR=nvim
 export VISUAL=nvim
 
+# Alias definitions
 alias ls='ls --color=auto'
 alias ll='ls -lah'
 alias ff='fastfetch'
@@ -11,37 +13,18 @@ alias gg='lazygit'
 alias signout='loginctl terminate-user $USER'
 alias ..='echo "cd .."; cd ..'
 
-[ -f "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh" ] && source "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh"
-plug "zsh-users/zsh-autosuggestions"
-plug "zap-zsh/supercharge"
-plug "zap-zsh/zap-prompt"
-plug "zsh-users/zsh-syntax-highlighting"
-plug "zap-zsh/sudo"
-plug "zsh-users/zsh-history-substring-search"
-plug "Aloxaf/fzf-tab"
-
+# Check if color is supported for ls, set alias accordingly
 if ls --color=auto &>/dev/null; then
-	alias ls='ls -p --color=auto'
+  alias ls='ls -p --color=auto'
 else
-	alias ls='ls -p -G'
+  alias ls='ls -p -G'
 fi
 
-autoload -Uz compinit
-compinit
+# Highlight search results with ripgrep
+alias hl='rg --passthru'
+alias gerp='rg'
 
-eval "$(starship init zsh)"
-
-export PATH=$PATH:/usr/local/go/bin/
-export PATH=$PATH:/~/go/bin/
-export PATH=$PATH:/mnt/c/ProgramData/chocolatey/lib/mpvio.install/tools/mpv.exe
-export JAVA_HOME=/usr/lib/jvm/java-11-openjdk
-export PATH=$JAVA_HOME/bin:$PATH
-
-export TERM="xterm-256color"
-export COLORTERM=truecolor
-
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-
+# Functions
 take() {
   mkdir $1 && cd $1
 }
@@ -50,7 +33,32 @@ clip() {
   cat $1 | clip.exe
 }
 
-alias hl='rg --passthru'
-alias gerp='rg'
+# Source custom Zap configuration if available
+[ -f "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh" ] && source "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh"
 
+# Plugin manager configuration
+plug "zsh-users/zsh-autosuggestions"
+plug "zap-zsh/supercharge"
+plug "zap-zsh/zap-prompt"
+plug "zsh-users/zsh-syntax-highlighting"
+plug "zap-zsh/sudo"
+plug "zsh-users/zsh-history-substring-search"
+plug "Aloxaf/fzf-tab"
+bindkey "^R" history-incremental-search-backward
+
+# Initialize autocomplete
+autoload -Uz compinit
+compinit
+
+# Starship prompt initialization
+eval "$(starship init zsh)"
+
+# Terminal settings
+export TERM="xterm-256color"
+export COLORTERM=truecolor
+
+# Linuxbrew environment
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+# Tmux startup if not already in tmux
 if [ "$TMUX" = "" ]; then tmux; fi

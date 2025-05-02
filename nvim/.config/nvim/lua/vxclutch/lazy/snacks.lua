@@ -1,6 +1,6 @@
 return {
-  -- this is a sort of related
   {
+    -- this is a sort of related
     "stevearc/dressing.nvim",
   },
   {

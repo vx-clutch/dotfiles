@@ -9,7 +9,6 @@ return {
         "c",
         "lua",
         "bash",
-        "java",
       },
 
       textobjects = {

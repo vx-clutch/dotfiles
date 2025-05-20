@@ -20,7 +20,7 @@ bindsym $mod+Return exec /home/linuxbrew/.linuxbrew/bin/wezterm
 
 bindsym $mod+q kill
 
-bindcode $mod+40 exec "rofi -modi drun,run -show drun"
+bindcode $mod+40 exec dmenu_run
 bindsym $mod+Shift+p exec i3lock
 
 bindsym $mod+j focus left

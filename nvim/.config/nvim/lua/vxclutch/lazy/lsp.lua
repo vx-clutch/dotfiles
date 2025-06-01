@@ -6,8 +6,6 @@ return {
 			"williamboman/mason-lspconfig.nvim",
 			"j-hui/fidget.nvim",
 			"stevearc/conform.nvim",
-
-			-- Completion-related plugins
 			"hrsh7th/nvim-cmp",
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-buffer",
@@ -17,7 +15,6 @@ return {
 		},
 
 		config = function()
-			-- Autocomplete Setup
 			local cmp = require("cmp")
 			local luasnip = require("luasnip")
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
@@ -42,7 +39,6 @@ return {
 				}),
 			})
 
-			-- LSP + Tools Setup
 			require("conform").setup({
 				formatters_by_ft = {},
 			})
@@ -84,6 +80,14 @@ return {
 						})
 					end,
 				},
+			})
+
+			vim.diagnostic.config({
+				virtual_text = true,
+				signs = true,
+				underline = true,
+				update_in_insert = false,
+				severity_sort = true,
 			})
 		end,
 	},

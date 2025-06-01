@@ -2,7 +2,7 @@ return {
 	{
 		"neovim/nvim-lspconfig",
 		dependencies = {
-			{ "mason-org/mason.nvim",           version = "^1.0.0" },
+			{ "mason-org/mason.nvim", version = "^1.0.0" },
 			{ "mason-org/mason-lspconfig.nvim", version = "^1.0.0" },
 			"j-hui/fidget.nvim",
 			"stevearc/conform.nvim",
@@ -88,8 +88,6 @@ return {
 				ensure_installed = {
 					"lua_ls",
 					"clangd",
-					"gopls",
-					"rust_analyzer",
 					"tinymist",
 				},
 				handlers = {
@@ -120,20 +118,6 @@ return {
 						})
 					end,
 
-					["svelte"] = function()
-						require("lspconfig").svelte.setup({
-							capabilities = capabilities,
-							on_attach = function(client, bufnr)
-								vim.api.nvim_create_autocmd("BufWritePost", {
-									pattern = { "*.js", "*.ts" },
-									callback = function(ctx)
-										client.notify("$/onDidChangeTsOrJsFile", { uri = ctx.match })
-									end,
-								})
-							end,
-						})
-					end,
-
 					["tinymist"] = function()
 						require("lspconfig").tinymist.setup({
 							capabilities = capabilities,
@@ -150,17 +134,25 @@ return {
 			l.handlers["textDocument/hover"] = function(_, result, ctx, config)
 				config = config or { border = "rounded", focusable = true }
 				config.focus_id = ctx.method
-				if not (result and result.contents) then return end
+				if not (result and result.contents) then
+					return
+				end
 				local markdown_lines = l.util.convert_input_to_markdown_lines(result.contents)
-				markdown_lines = vim.tbl_filter(function(line) return line ~= "" end, markdown_lines)
-				if vim.tbl_isempty(markdown_lines) then return end
+				markdown_lines = vim.tbl_filter(function(line)
+					return line ~= ""
+				end, markdown_lines)
+				if vim.tbl_isempty(markdown_lines) then
+					return
+				end
 				return l.util.open_floating_preview(markdown_lines, "markdown", config)
 			end
 
 			local autocmd = vim.api.nvim_create_autocmd
 			autocmd({ "BufEnter", "BufWinEnter" }, {
 				pattern = { "*.vert", "*.frag" },
-				callback = function() vim.cmd("set filetype=glsl") end,
+				callback = function()
+					vim.cmd("set filetype=glsl")
+				end,
 			})
 
 			autocmd("LspAttach", {

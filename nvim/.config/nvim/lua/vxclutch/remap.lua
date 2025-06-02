@@ -24,7 +24,7 @@ map("n", "<leader>o", ":Oil<CR>")
 
 -- LSP
 map("n", "gd", vim.lsp.buf.definition)
-map("n", "<leader>rn", vim.lsp.buf.rename, { noremap = true, silent = true })
+map("n", "<leader>r", vim.lsp.buf.rename, { noremap = true, silent = true })
 
 -- Window Controls
 map("n", "<C-h>", "<C-w><C-h>")

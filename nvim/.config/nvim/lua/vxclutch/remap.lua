@@ -33,3 +33,6 @@ map("n", "<C-h>", "<C-w><C-h>")
 map("n", "<C-l>", "<C-w><C-l>")
 map("n", "<C-j>", "<C-w><C-j>")
 map("n", "<C-k>", "<C-w><C-k>")
+
+-- Typst
+map("n", "<leader>p", "tinymist preview " .. vim.fn.expand("%:t"))

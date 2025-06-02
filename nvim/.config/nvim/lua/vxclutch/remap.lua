@@ -12,10 +12,8 @@ end
 map("n", "<Esc>", ":nohlsearch<CR>")
 
 -- Move lines --
-map("n", "<A-j>", ":m .+1<CR>==")
-map("n", "<A-k>", ":m .-2<CR>==")
-map("v", "<A-j>", ":m '>+1<CR>gv=gv")
-map("v", "<A-k>", ":m '<-2<CR>gv=gv")
+map("v", "J", ":m '>+1<CR>gv=gv")
+map("v", "K", ":m '<-2<CR>gv=gv")
 
 -- Scrolling --
 map("n", "<C-d>", "<C-d>zz")

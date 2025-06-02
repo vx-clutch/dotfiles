@@ -20,7 +20,7 @@ map("n", "<C-d>", "<C-d>zz")
 map("n", "<C-u>", "<C-u>zz")
 
 -- File navigation --
-map("n", "<leader>pv", ":Oil<CR>")
+map("n", "<leader>o", ":Oil<CR>")
 
 -- LSP
 map("n", "gd", vim.lsp.buf.definition)

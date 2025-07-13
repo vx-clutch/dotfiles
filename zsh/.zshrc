@@ -29,7 +29,7 @@ take() {
   mkdir $1 && cd $1
 }
 
-clip() {
+clip() { # wsl only
   cat $1 | clip.exe
 }
 

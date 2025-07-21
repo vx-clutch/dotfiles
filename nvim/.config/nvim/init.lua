@@ -22,6 +22,23 @@ map("n", "<C-h>", "<C-w><C-h>")                                         -- Focus
 map("n", "<C-l>", "<C-w><C-l>")                                         -- Focus left
 map("n", "<C-j>", "<C-w><C-j>")                                         -- Focus down
 map("n", "<C-k>", "<C-w><C-k>")                                         -- Focus up
+vim.keymap.set("n", "<leader>e", function()                             -- Populate then toggle the quick-fix list
+  vim.diagnostic.setqflist({ open = false })
+  local is_open = false
+  for _, win in ipairs(vim.fn.getwininfo()) do
+    if win.quickfix == 1 then
+      is_open = true
+      break
+    end
+  end
+  vim.schedule(function()
+    if is_open then
+      vim.cmd("cclose")
+    else
+      vim.cmd("copen")
+    end
+  end)
+end)
 
 -- Visual settings
 opt.inccommand = "split"                                                -- Live substitution preview

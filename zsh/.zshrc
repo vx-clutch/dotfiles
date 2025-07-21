@@ -10,7 +10,7 @@ alias ff='fastfetch'
 alias apt='nala'
 alias gg='lazygit'
 alias signout='loginctl terminate-user $USER'
-alias ..='echo "cd .."; cd ..'
+alias vim='nvim'
 
 # Check if color is supported for ls, set alias accordingly
 if ls --color=auto &>/dev/null; then

@@ -1,5 +1,5 @@
 -- Colorscheme & Theme
-vim.cmd.colorscheme("torte")
+vim.cmd.colorscheme("vim")
 
 vim.g.mapleader = " "
 local opt = vim.opt

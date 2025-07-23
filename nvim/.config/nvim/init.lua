@@ -12,6 +12,8 @@ local function map(mode, lhs, rhs, opts)
         vim.keymap.set(mode, lhs, rhs, options)
 end
 
+map("n", "<leader>en", ":e ~/dotfiles/nvim/.config/nvim/init.lua<CR>")  -- Edit NeoVim config file ( this file )
+
 map("n", "<Esc>", ":nohlsearch<CR>")                                    -- Clear search highlight
 map("v", "J", ":m '>+1<CR>gv=gv")                                       -- Move the current line down
 map("v", "K", ":m '<-2<CR>gv=gv")                                       -- Move the current line up
@@ -48,9 +50,9 @@ opt.number = true                                                       -- Show 
 opt.relativenumber = true                                               -- Show relative line numbers
 opt.splitbelow = true                                                   -- New horizontal splits open below
 opt.splitright = true                                                   -- New vertical splits open to the right
-opt.shiftwidth = 2                                                      -- Spaces for auto-indent
-opt.tabstop = 2                                                         -- Spaces for a tab character
-opt.expandtab = true                                                    -- Use spaces instead of tabs
+opt.shiftwidth = 8                                                      -- Spaces for auto-indent
+opt.tabstop = 8                                                         -- Spaces for a tab character
+opt.expandtab = false                                                   -- Use spaces instead of tabs
 opt.scrolloff = 8                                                       -- Lines to keep above/below cursor
 vim.cmd('autocmd BufEnter * set formatoptions-=cro')                    -- Disable auto-commenting on new lines
 vim.cmd('autocmd BufEnter * setlocal formatoptions-=cro')               -- Disable auto-commenting for local buffers

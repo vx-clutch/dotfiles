@@ -21,7 +21,7 @@ config.window_padding = {
 	bottom = 0,
 }
 
-config.font = wezterm.font("Iosevka Slab")
+config.font = wezterm.font("ComicShannsMono Nerd Font")
 config.font_size = 20.0
 
 return config

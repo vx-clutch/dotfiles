@@ -13,6 +13,7 @@ local function map(mode, lhs, rhs, opts)
 end
 
 map("n", "<Esc>", ":nohlsearch<CR>")                                    -- Clear search highlight
+map("n", "<leader>ff", ":find ")                                        -- Fuzzy Find on the file system
 map("v", "J", ":m '>+1<CR>gv=gv")                                       -- Move the current line down
 map("v", "K", ":m '<-2<CR>gv=gv")                                       -- Move the current line up
 map("n", "<C-d>", "<C-d>zz")                                            -- Scroll down and move cursor to center

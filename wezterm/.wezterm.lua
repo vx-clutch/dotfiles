@@ -24,4 +24,18 @@ config.window_padding = {
 config.font = wezterm.font("ComicShannsMono Nerd Font")
 config.font_size = 20.0
 
+local TARGET_ROWS = 25
+wezterm.on("window-config-reloaded", function(window, pane)
+  local dims = window:get_dimensions()
+  local pixel_height = dims.pixel_height
+
+  local line_height = config.line_height or 1.2
+  local font_size = (pixel_height / TARGET_ROWS) / line_height
+
+  window:set_config_overrides({
+    font_size = font_size,
+  })
+end)
+config.line_height = 1.2
+
 return config

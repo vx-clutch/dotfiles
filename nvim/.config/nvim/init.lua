@@ -162,68 +162,17 @@ local servers = { "lua_ls", "clangd" }
 for _, server in ipairs(servers) do
   lspconfig[server].setup({})
 end
-<<<<<<< HEAD
 
-bootstrap_pckr()
-
-require("pckr").add {
-        { "williamboman/mason.nvim", build = ":MasonUpdate" },
-        { "williamboman/mason-lspconfig.nvim" },
-        { "hrsh7th/nvim-cmp" },
-        { "hrsh7th/cmp-nvim-lsp" },
-        { "hrsh7th/cmp-buffer" },
-        { "L3MON4D3/LuaSnip" },
-  {
-    "neovim/nvim-lspconfig",
-    dependencies = {
-      "hrsh7th/cmp-nvim-lsp",
-      "williamboman/mason.nvim",
-      "williamboman/mason-lspconfig.nvim",
-    },
-    config = function()
-      local lspconfig = require("lspconfig")
-      local cmp_lsp = require("cmp_nvim_lsp")
-
-      local on_attach = function(_, bufnr)
-        local map = function(mode, lhs, rhs)
-          vim.keymap.set(mode, lhs, rhs, { buffer = bufnr, silent = true })
-        end
-        map("n", "gd", vim.lsp.buf.definition)
-        map("n", "K", vim.lsp.buf.hover)
-        map("n", "<leader>rn", vim.lsp.buf.rename)
-        map("n", "<leader>ca", vim.lsp.buf.code_action)
-      end
-
-      local capabilities = cmp_lsp.default_capabilities()
-
-      require("mason").setup()
-      require("mason-lspconfig").setup {
-        ensure_installed = { "lua_ls", "clangd" }
-      }
-
-      local servers = { "lua_ls", "clangd" }
-      for _, server in ipairs(servers) do
-        local opts = {
-          on_attach = on_attach,
-          capabilities = capabilities,
-        }
-        if server == "lua_ls" then
-          opts.settings = {
-            Lua = {
-              diagnostics = { globals = { "vim" } },
-              workspace = { checkThirdParty = false },
-            },
-          }
-        end
-        lspconfig[server].setup(opts)
-      end
-=======
 vim.api.nvim_create_autocmd('LspAttach', {
   callback = function(ev)
     local client = vim.lsp.get_client_by_id(ev.data.client_id)
     if client:supports_method('textDocument/completion') then
       vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
->>>>>>> 0fdc7d8 (save)
     end
   end,
+})
+
+vim.diagnostic.config({
+  virtual_text = true,
+  underline = true,
 })

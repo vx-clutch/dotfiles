@@ -23,6 +23,7 @@ vim.o.wrap = false
 vim.o.winborder = "rounded"
 vim.o.clipboard = "unnamedplus"
 vim.o.swapfile = false
+vim.opt.path:append("**")
 
 local augroup = vim.api.nvim_create_augroup("vxclutch", {})
 

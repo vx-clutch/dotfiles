@@ -1,3 +1,5 @@
+bindkey -e
+
 # Set the default editor to Neovim
 export EDITOR=nvim
 export SUDO_EDITOR=nvim

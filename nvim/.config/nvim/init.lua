@@ -42,9 +42,9 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 vim.api.nvim_create_autocmd("TermOpen", {
   group = augroup,
   callback = function()
-    vim.vim.o_local.number = false
-    vim.vim.o_local.relativenumber = false
-    vim.vim.o_local.signcolumn = "no"
+    vim.opt_local.number = false
+    vim.opt_local.relativenumber = false
+    vim.opt_local.signcolumn = "no"
   end,
 })
 
@@ -81,7 +81,7 @@ local function FloatingTerminal()
   if not terminal_state.buf or not vim.api.nvim_buf_is_valid(terminal_state.buf) then
     terminal_state.buf = vim.api.nvim_create_buf(false, true)
 
-    vim.api.nvim_buf_set_vim.oion(terminal_state.buf, 'bufhidden', 'hide')
+    vim.api.nvim_buf_set_option(terminal_state.buf, 'bufhidden', 'hide')
   end
 
 
@@ -89,7 +89,6 @@ local function FloatingTerminal()
   local height = math.floor(vim.o.lines * 0.8)
   local row = math.floor((vim.o.lines - height) / 2)
   local col = math.floor((vim.o.columns - width) / 2)
-
 
   terminal_state.win = vim.api.nvim_open_win(terminal_state.buf, true, {
     relative = 'editor',
@@ -102,10 +101,10 @@ local function FloatingTerminal()
   })
 
 
-  vim.api.nvim_win_set_vim.oion(terminal_state.win, 'winblend', 0)
+  vim.api.nvim_win_set_option(terminal_state.win, 'winblend', 0)
 
 
-  vim.api.nvim_win_set_vim.oion(terminal_state.win, 'winhighlight',
+  vim.api.nvim_win_set_option(terminal_state.win, 'winhighlight',
     'Normal:FloatingTermNormal,FloatBorder:FloatingTermBorder')
 
 

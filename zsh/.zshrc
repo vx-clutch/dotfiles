@@ -72,3 +72,7 @@ if [ "$TMUX" = "" ]; then tmux; fi
 # This section can be safely removed at any time if needed.
 [[ ! -r '/home/owen/.opam/opam-init/init.zsh' ]] || source '/home/owen/.opam/opam-init/init.zsh' > /dev/null 2> /dev/null
 # END opam configuration
+
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey '^X^E' edit-command-line

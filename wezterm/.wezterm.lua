@@ -13,15 +13,18 @@ if wezterm.target_triple:find("windows") then
 	}
 end
 
-config.hide_tab_bar_if_only_one_tab = true
+config.enable_tab_bar = false
 config.window_padding = {
-	left = 0,
-	right = 0,
-	top = 0,
-	bottom = 0,
+	left = 15,
+	right = 15,
+	top = 15,
+	bottom = 15,
 }
 
 config.font = wezterm.font("ComicShannsMono Nerd Font")
 config.font_size = 20.0
+
+config.front_end = "WebGpu"
+config.window_decorations = "RESIZE"
 
 return config

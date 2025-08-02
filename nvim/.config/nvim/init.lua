@@ -26,6 +26,10 @@ vim.o.clipboard = "unnamedplus"
 vim.o.swapfile = false
 vim.opt.path:append("**")
 
+vim.keymap.set("i", "me::", function()
+  return vim.fn.strftime("Author: vx_clutch <https://vx-clutch.github.io/vxserver.dev/>\nDate: %B %d, %Y\nLicense: BSD-3-Clause")
+end, { expr = true })
+
 local augroup = vim.api.nvim_create_augroup("vxclutch", {})
 
 vim.api.nvim_create_autocmd("BufReadPost", {

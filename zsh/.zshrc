@@ -5,6 +5,9 @@ export EDITOR=nvim
 export SUDO_EDITOR=nvim
 export VISUAL=nvim
 
+# Set PROVIDER for ai-commit
+export PROVIDER=ollama
+
 # Alias definitions
 alias ls='ls --color=auto'
 alias ll='ls -lah'

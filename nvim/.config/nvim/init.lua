@@ -1,25 +1,28 @@
 vim.cmd.colorscheme("vim")
 vim.g.mapleader = " "
-vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-h>", "<C-w><C-h>")
 vim.keymap.set("n", "<C-j>", "<C-w><C-j>")
 vim.keymap.set("n", "<C-k>", "<C-w><C-k>")
 vim.keymap.set("n", "<C-l>", "<C-w><C-l>")
+
+vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
+
 vim.keymap.set("n", "<Esc>", ":nohlsearch<CR>")
+
 vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
-vim.keymap.set("n", "<leader>a", ":lua vim.lsp.buf.code_action()<CR>")
 vim.keymap.set("n", "<leader>pv", ":Ex<CR>")
+
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+
 vim.keymap.set({ 'n', 'v', 'x' }, '<leader>d', '"+d<CR>')
 vim.keymap.set({ 'n', 'v', 'x' }, '<leader>y', '"+y<CR>')
-vim.o.number = true
+
 vim.o.relativenumber = true
 vim.o.shiftwidth = 2
 vim.o.tabstop = 2
 vim.o.expandtab = true
-vim.o.scrolloff = 8
 vim.o.wrap = false
 vim.o.winborder = "rounded"
 vim.o.clipboard = "unnamedplus"

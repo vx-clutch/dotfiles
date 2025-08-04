@@ -20,9 +20,9 @@ vim.keymap.set({ 'n', 'v', 'x' }, '<leader>d', '"+d<CR>')
 vim.keymap.set({ 'n', 'v', 'x' }, '<leader>y', '"+y<CR>')
 
 vim.o.relativenumber = true
-vim.o.shiftwidth = 2
-vim.o.tabstop = 2
-vim.o.expandtab = true
+vim.o.shiftwidth = 8
+vim.o.tabstop = 8
+vim.o.expandtab = false
 vim.o.wrap = false
 vim.o.winborder = "rounded"
 vim.o.clipboard = "unnamedplus"

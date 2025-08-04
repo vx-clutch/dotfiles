@@ -40,10 +40,8 @@ clip() { # wsl only
 # Plugin manager configuration
 plug "zsh-users/zsh-autosuggestions"
 plug "zap-zsh/supercharge"
-plug "zap-zsh/zap-prompt"
 plug "zsh-users/zsh-syntax-highlighting"
 plug "zap-zsh/sudo"
-plug "zsh-users/zsh-history-substring-search"
 plug "Aloxaf/fzf-tab"
 bindkey "^R" history-incremental-search-backward
 

@@ -20,6 +20,7 @@ vim.keymap.set({ 'n', 'v', 'x' }, '<leader>d', '"+d<CR>')
 vim.keymap.set({ 'n', 'v', 'x' }, '<leader>y', '"+y<CR>')
 
 vim.o.relativenumber = true
+vim.o.number = true
 vim.o.shiftwidth = 8
 vim.o.tabstop = 8
 vim.o.expandtab = false

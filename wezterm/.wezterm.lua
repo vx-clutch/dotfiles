@@ -13,6 +13,8 @@ if wezterm.target_triple:find("windows") then
 	}
 end
 
+config.scrollback_lines = 3500
+
 config.enable_tab_bar = false
 config.window_padding = {
 	left = 0,
@@ -24,7 +26,7 @@ config.window_padding = {
 config.font = wezterm.font("ComicShannsMono Nerd Font")
 config.font_size = 20.0
 
-config.front_end = "WebGpu"
-config.window_decorations = "RESIZE"
+-- config.front_end = "WebGpu"
+-- config.window_decorations = "RESIZE"
 
 return config

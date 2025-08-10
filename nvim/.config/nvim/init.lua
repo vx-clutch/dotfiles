@@ -1,3 +1,5 @@
+vim.cmd.colorscheme("vim")
+
 vim.g.mapleader = " "
 vim.keymap.set("n", "<C-h>", "<C-w><C-h>")
 vim.keymap.set("n", "<C-j>", "<C-w><C-j>")
@@ -18,31 +20,11 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 vim.keymap.set({ 'n', 'v', 'x' }, '<leader>d', '"+d<CR>')
 vim.keymap.set({ 'n', 'v', 'x' }, '<leader>y', '"+y<CR>')
 
-vim.cmd("set nocompatible") -- force 'nocompatible', like modern Vim
-vim.cmd("syntax off")
-vim.o.background = "dark"
-vim.o.clipboard = "unnamedplus"
-vim.o.cmdheight = 1
-vim.o.expandtab = false
-vim.o.hlsearch = false
-vim.o.ignorecase = false
-vim.o.incsearch = false
-vim.o.laststatus = 1
 vim.o.number = true
 vim.o.relativenumber = true
-vim.o.ruler = true
-vim.o.shiftwidth = 8
-vim.o.showcmd = true
-vim.o.showmode = true
-vim.o.showtabline = 0
-vim.o.smartcase = false
-vim.o.statusline = ""
 vim.o.swapfile = false
-vim.o.tabstop = 8
-vim.o.termguicolors = false
-vim.o.wildmenu = false
-vim.o.winborder = "rounded"
 vim.o.wrap = false
+vim.opt.wildoptions = {}
 vim.opt.path:append("**")
 
 vim.keymap.set("i", "me::", function()

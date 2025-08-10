@@ -1,20 +1,3 @@
 add_newline = false
 
-# format = """
-# [==> ](red)$directory$git_branch$character
-# """
-format = """
-$directory$git_branch$git_status
-; 
-"""
-# format = ""
-
-[directory]
-truncation_length = 2
-style = "#008080"
-
-[git_status]
-ahead = '⇡${count}'
-diverged = '⇕⇡${ahead_count}⇣${behind_count}'
-behind = '⇣${count}'
-staged = '[++\($count\)](green)'
+format = "$git_status$directory"

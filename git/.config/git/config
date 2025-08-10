@@ -14,3 +14,6 @@
   autosquash = true
 [diff]
   colorMoved = zebra
+[user]
+	email = owestness@gmail.com
+	name = vx-clutch

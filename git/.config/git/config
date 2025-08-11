@@ -17,3 +17,5 @@
 [user]
 	email = owestness@gmail.com
 	name = vx-clutch
+[credential]
+	helper = store

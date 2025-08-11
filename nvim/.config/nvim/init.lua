@@ -12,13 +12,13 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "<Esc>", ":nohlsearch<CR>")
 
 vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
-vim.keymap.set("n", "<leader>pv", ":Ex<CR>")
+vim.keymap.set("n", "<leader>o", ":Pick files<CR>")
+
+vim.keymap.set('n', '<leader>s', ':e #<CR>')
+vim.keymap.set('n', '<leader>S', ':sf #<CR>')
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
-
-vim.keymap.set({ 'n', 'v', 'x' }, '<leader>d', '"+d<CR>')
-vim.keymap.set({ 'n', 'v', 'x' }, '<leader>y', '"+y<CR>')
 
 vim.o.number = true
 vim.o.relativenumber = true
@@ -161,9 +161,14 @@ vim.keymap.set("t", "<Esc>", function()
 		terminal_state.is_open = false
 	end
 end, { noremap = true, silent = true })
+
 vim.pack.add({
 	{ src = "https://github.com/neovim/nvim-lspconfig" },
+	{ src = "https://github.com/echasnovski/mini.pick" },
 })
+
+require "mini.pick".setup()
+
 local lspconfig = require("lspconfig")
 local servers = { "lua_ls", "clangd" }
 for _, server in ipairs(servers) do

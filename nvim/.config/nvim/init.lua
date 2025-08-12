@@ -27,6 +27,7 @@ vim.o.wrap = false
 vim.opt.wildoptions = {}
 vim.opt.path:append("**")
 
+-- TODO(vx-clutch): Make this detect git and put that information in there as "This file is part of REPO"
 vim.keymap.set("i", "me::", function()
 	return vim.fn.strftime(
 	"Author: vx_clutch <https://vx-clutch.github.io/vxserver.dev/>\nDate: %B %d, %Y\nLicense: BSD-3-Clause")

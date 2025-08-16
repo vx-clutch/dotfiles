@@ -30,7 +30,7 @@ vim.opt.path:append("**")
 -- TODO(vx-clutch): Make this detect git and put that information in there as "This file is part of REPO"
 vim.keymap.set("i", "me::", function()
 	return vim.fn.strftime(
-	"Author: vx_clutch <https://vx-clutch.github.io/vxserver.dev/>\nDate: %B %d, %Y\nLicense: BSD-3-Clause")
+		"Author: vx_clutch <https://vx-clutch.github.io/vxserver.dev/>\nDate: %B %d, %Y\nLicense: BSD-3-Clause")
 end, { expr = true })
 
 local augroup = vim.api.nvim_create_augroup("vxclutch", {})
@@ -180,3 +180,21 @@ vim.diagnostic.config({
 	virtual_text = true,
 	underline = true,
 })
+
+-- AP CSA JAVA UTILS
+vim.api.nvim_create_user_command('AP', function()
+  local date = os.date("%Y-%m-%d")
+  local dir_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
+  local lines = {
+    "// Owen Westness, " .. date .. ", " .. dir_name,
+    "public class  ",
+    "{",
+    "    public static void main(String[] args) {",
+    "        // Your code here",
+    "    }",
+    "}"
+  }
+  vim.api.nvim_buf_set_lines(0, 0, -1, false, lines)
+  vim.api.nvim_win_set_cursor(0, {2, 15})
+  vim.cmd('startinsert')
+end, {})

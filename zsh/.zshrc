@@ -6,11 +6,15 @@ export VISUAL=nvim
 export TERM="xterm-256color"
 export COLORTERM=truecolor
 
+export PATH=$HOME/.scripts:$PATH
+
 alias ls='ls --color=auto'
 alias ll='ls -lah'
+alias v='nvim'
 
 take() {
-  mkdir $1 && cd $1
+  mkdir $1;
+  cd $1
 }
 
 [ -f "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh" ] && source "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh"

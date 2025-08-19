@@ -1,24 +1,15 @@
 vim.cmd.colorscheme("vim")
-
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#000000" })
 vim.g.mapleader = " "
-vim.keymap.set("n", "<C-h>", "<C-w><C-h>")
-vim.keymap.set("n", "<C-j>", "<C-w><C-j>")
-vim.keymap.set("n", "<C-k>", "<C-w><C-k>")
-vim.keymap.set("n", "<C-l>", "<C-w><C-l>")
-
-vim.keymap.set("n", "<C-d>", "<C-d>zz")
-vim.keymap.set("n", "<C-u>", "<C-u>zz")
 
 vim.keymap.set("n", "<Esc>", ":nohlsearch<CR>")
-
 vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
 vim.keymap.set("n", "<leader>o", ":Pick files<CR>")
-
-vim.keymap.set('n', '<leader>s', ':e #<CR>')
-vim.keymap.set('n', '<leader>S', ':sf #<CR>')
-
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+
+vim.keymap.set("n", "<leader>en", ":edit $HOME/.config/nvim/init.lua<CR>")
+vim.keymap.set("n", "<leader>z", ":edit $HOME/.zshrc<CR>")
 
 vim.o.number = true
 vim.o.relativenumber = true
@@ -27,11 +18,56 @@ vim.o.wrap = false
 vim.opt.wildoptions = {}
 vim.opt.path:append("**")
 
--- TODO(vx-clutch): Make this detect git and put that information in there as "This file is part of REPO"
-vim.keymap.set("i", "me::", function()
-	return vim.fn.strftime(
-		"Author: vx_clutch <https://vx-clutch.github.io/vxserver.dev/>\nDate: %B %d, %Y\nLicense: BSD-3-Clause")
-end, { expr = true })
+-- TODO(vx-clutch): fix the C behavior, // > /*
+vim.api.nvim_create_user_command("Copyright", function()
+    local handle = io.popen("git rev-parse --show-toplevel 2>/dev/null")
+    local repo_path = handle and handle:read("*l") or nil
+    if handle then handle:close() end
+
+    local repo = repo_path and repo_path:match("([^/]+)$") or "unknown"
+
+    local header_lines = {
+        "Copyright (C) vx_clutch",
+        "",
+        "This file is part of " .. repo,
+        "",
+        "This project and file is licensed under the BSD-3-Clause license.",
+        "<https://opensource.org/license/bsd-3-clause>",
+    }
+
+    local cstr = vim.bo.commentstring
+
+    local commented = {}
+
+    if cstr ~= "" and cstr:find("%%s") then
+        local function comment(line)
+            if line == "" then
+                return ""
+            end
+            local res = cstr:gsub("%%s", line)
+            return res
+        end
+
+        for _, l in ipairs(header_lines) do
+            table.insert(commented, comment(l))
+        end
+        table.insert(commented, "")
+    else
+        table.insert(commented, "/*")
+        for _, l in ipairs(header_lines) do
+            if l == "" then
+                table.insert(commented, " *")
+            else
+                table.insert(commented, " * " .. l)
+            end
+        end
+        table.insert(commented, " */")
+        table.insert(commented, "")
+    end
+
+    vim.api.nvim_buf_set_lines(0, 0, 0, false, commented)
+end, {})
+
 
 local augroup = vim.api.nvim_create_augroup("vxclutch", {})
 
@@ -164,17 +200,14 @@ vim.keymap.set("t", "<Esc>", function()
 end, { noremap = true, silent = true })
 
 vim.pack.add({
-	{ src = "https://github.com/neovim/nvim-lspconfig" },
 	{ src = "https://github.com/echasnovski/mini.pick" },
+	{ src = "https://github.com/mason-org/mason.nvim" },
 })
 
 require "mini.pick".setup()
+require "mason".setup()
 
-local lspconfig = require("lspconfig")
-local servers = { "lua_ls", "clangd" }
-for _, server in ipairs(servers) do
-	lspconfig[server].setup({})
-end
+vim.lsp.enable({ "lua_ls", "clangd" })
 
 vim.diagnostic.config({
 	virtual_text = true,
@@ -183,18 +216,18 @@ vim.diagnostic.config({
 
 -- AP CSA JAVA UTILS
 vim.api.nvim_create_user_command('AP', function()
-  local date = os.date("%Y-%m-%d")
-  local dir_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
-  local lines = {
-    "// Owen Westness, " .. date .. ", " .. dir_name,
-    "public class  ",
-    "{",
-    "    public static void main(String[] args) {",
-    "        // Your code here",
-    "    }",
-    "}"
-  }
-  vim.api.nvim_buf_set_lines(0, 0, -1, false, lines)
-  vim.api.nvim_win_set_cursor(0, {2, 15})
-  vim.cmd('startinsert')
+	local date = os.date("%Y-%m-%d")
+	local dir_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
+	local lines = {
+		"// Owen Westness, " .. date .. ", " .. dir_name,
+		"public class  ",
+		"{",
+		"    public static void main(String[] args) {",
+		"        // Your code here",
+		"    }",
+		"}"
+	}
+	vim.api.nvim_buf_set_lines(0, 0, -1, false, lines)
+	vim.api.nvim_win_set_cursor(0, { 2, 15 })
+	vim.cmd('startinsert')
 end, {})

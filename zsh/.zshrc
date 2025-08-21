@@ -10,6 +10,7 @@ export PATH=$HOME/.scripts:$PATH
 
 alias ls='ls --color=auto'
 alias ll='ls -lah'
+alias gg='lazygit'
 alias v='nvim'
 
 take() {

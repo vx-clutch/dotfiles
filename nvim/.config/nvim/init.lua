@@ -52,7 +52,12 @@ cmp.setup({
 		completion = cmp.config.window.bordered {
 			border = 'rounded', },
 		documentation = cmp.config.window.bordered { border = 'rounded' },
+	},
+
+	experimental = {
+		ghost_text = true,
 	}
+
 })
 
 vim.lsp.enable({ "lua_ls", "clangd", "tinymist" })

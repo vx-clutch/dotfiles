@@ -3,6 +3,8 @@ vim.o.relativenumber = true
 vim.o.swapfile = false
 vim.o.wrap = false
 vim.o.winborder = "rounded"
+vim.o.splitright = true
+vim.o.splitbelow = true
 vim.opt.wildoptions = {}
 
 vim.g.mapleader = " "
@@ -12,7 +14,7 @@ vim.keymap.set("n", "<leader>o", ":Pick files<CR>")
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 vim.keymap.set("n", "<leader>en", ":edit $HOME/.config/nvim/init.lua<CR>")
-vim.keymap.set("n", "<leader>z", ":edit $HOME/.zshrc<CR>")
+vim.keymap.set("n", "<leader>ez", ":edit $HOME/.zshrc<CR>")
 
 vim.pack.add({
 	{ src = "https://github.com/echasnovski/mini.pick" },
@@ -48,7 +50,8 @@ cmp.setup({
 
 	window = {
 		completion = cmp.config.window.bordered {
-			border = 'rounded', }
+			border = 'rounded', },
+		documentation = cmp.config.window.bordered { border = 'rounded' },
 	}
 })
 

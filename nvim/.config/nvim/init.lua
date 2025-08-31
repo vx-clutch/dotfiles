@@ -1,3 +1,4 @@
+vim.cmd.colorscheme("quiet");
 vim.o.number = true
 vim.o.relativenumber = true
 vim.o.swapfile = false
@@ -10,9 +11,14 @@ vim.opt.wildoptions = {}
 vim.g.mapleader = " "
 vim.keymap.set("n", "<Esc>", ":nohlsearch<CR>")
 vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
+vim.keymap.set("n", "<leader>r>", ":make<CR>")
 vim.keymap.set("n", "<leader>o", ":Pick files<CR>")
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+vim.keymap.set({ "n", "i", "v" }, "<C-h>", "<C-w><C-h>")
+vim.keymap.set({ "n", "i", "v" }, "<C-j>", "<C-w><C-j>")
+vim.keymap.set({ "n", "i", "v" }, "<C-k>", "<C-w><C-k>")
+vim.keymap.set({ "n", "i", "v" }, "<C-l>", "<C-w><C-l>")
 vim.keymap.set("n", "<leader>en", ":edit $HOME/.config/nvim/init.lua<CR>")
 vim.keymap.set("n", "<leader>ez", ":edit $HOME/.zshrc<CR>")
 

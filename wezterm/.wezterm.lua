@@ -24,10 +24,6 @@ config.window_padding = {
 config.font = wezterm.font("ComicShannsMono Nerd Font")
 config.font_size = 20.0
 
-config.colors = {
-	background = "#14161b"
-}
-
 config.front_end = "WebGpu"
 config.window_decorations = "RESIZE"
 

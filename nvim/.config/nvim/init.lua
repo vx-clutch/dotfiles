@@ -1,10 +1,10 @@
-vim.o.number = true
-vim.o.relativenumber = true
-vim.o.swapfile = false
-vim.o.wrap = false
-vim.o.winborder = "rounded"
-vim.o.splitright = true
-vim.o.splitbelow = true
+vim.opt.number = true
+vim.opt.relativenumber = true
+vim.opt.swapfile = false
+vim.opt.wrap = false
+vim.opt.winborder = "rounded"
+vim.opt.splitright = true
+vim.opt.splitbelow = true
 vim.opt.wildoptions = {}
 
 vim.g.mapleader = " "
@@ -14,63 +14,52 @@ vim.keymap.set("n", "<leader>r>", ":make<CR>")
 vim.keymap.set("n", "<leader>o", ":Pick files<CR>")
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
-vim.keymap.set({ "n", "i", "v" }, "<C-h>", "<C-w><C-h>")
-vim.keymap.set({ "n", "i", "v" }, "<C-j>", "<C-w><C-j>")
-vim.keymap.set({ "n", "i", "v" }, "<C-k>", "<C-w><C-k>")
-vim.keymap.set({ "n", "i", "v" }, "<C-l>", "<C-w><C-l>")
+for _, k in ipairs({ "h", "j", "k", "l" }) do
+	vim.keymap.set({ "n", "i", "v" }, "<C-" .. k .. ">", "<C-w><C-" .. k .. ">")
+end
 vim.keymap.set("n", "<leader>en", ":edit $HOME/.config/nvim/init.lua<CR>")
 vim.keymap.set("n", "<leader>ez", ":edit $HOME/.zshrc<CR>")
 
-vim.pack.add({
+vim.keymap.set("n", "<leader>s", function()
+	local alt = vim.fn.expand("%:r") .. (vim.bo.filetype == "c" and ".h" or ".c")
+	vim.cmd("edit " .. alt)
+end)
+
+vim.pack.add {
 	{ src = "https://github.com/echasnovski/mini.pick" },
 	{ src = "https://github.com/mason-org/mason.nvim" },
-	{ src = 'https://github.com/neovim/nvim-lspconfig' },
-	{ src = 'https://github.com/hrsh7th/nvim-cmp' },
-	{ src = 'https://github.com/hrsh7th/cmp-nvim-lsp' },
-})
+	{ src = "https://github.com/neovim/nvim-lspconfig" },
+	{ src = "https://github.com/hrsh7th/nvim-cmp" },
+	{ src = "https://github.com/hrsh7th/cmp-nvim-lsp" },
+}
 
-require "mini.pick".setup()
-require "mason".setup()
+require("mini.pick").setup()
+require("mason").setup()
 
 local cmp = require("cmp")
-local cmp_select = { behavior = cmp.SelectBehavior.Select }
-cmp.setup({
+cmp.setup {
 	preselect = cmp.PreselectMode.Item,
 	completion = { completeopt = "menu,menuone,noinsert" },
-
-	mapping = cmp.mapping.preset.insert({
-		['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-		['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-		['<C-y>'] = cmp.mapping.confirm({ select = true }),
+	mapping = cmp.mapping.preset.insert {
+		["<C-p>"] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Select },
+		["<C-n>"] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Select },
+		["<C-y>"] = cmp.mapping.confirm { select = true },
 		["<C-Space>"] = cmp.mapping.complete(),
-	}),
-
-	sources = cmp.config.sources({
-		{ name = "nvim_lsp" },
-	}),
-
-	performance = {
-		max_view_entries = 5,
 	},
-
+	sources = { { name = "nvim_lsp" } },
+	performance = { max_view_entries = 5 },
 	window = {
-		completion = cmp.config.window.bordered {
-			border = 'rounded', },
-		documentation = cmp.config.window.bordered { border = 'rounded' },
+		completion = cmp.config.window.bordered { border = "rounded" },
+		documentation = cmp.config.window.bordered { border = "rounded" },
 	},
-})
+}
 
 local lc = require("lspconfig")
 lc.jdtls.setup {
-	cmd = { "jdtls", "-configuration", "/home/owen/.cache/jdtls/config", "-data", "/home/owen/.cache/jdtls/workspace" },
+	cmd = { "jdtls", "-configuration", vim.fn.stdpath("cache") .. "/jdtls/config", "-data", vim.fn.stdpath("cache") .. "/jdtls/workspace" },
 	filetypes = { "java" },
-	root_dur = lc.util.root_pattern(".git", "."),
+	root_dir = lc.util.root_pattern(".git", "."),
 }
 
-vim.lsp.enable({ "lua_ls", "clangd", "jdtls" })
-
-vim.diagnostic.config({
-	virtual_text = true,
-	underline = true,
-	signs = false,
-})
+vim.lsp.enable { "lua_ls", "clangd", "jdtls" }
+vim.diagnostic.config { virtual_text = true, underline = true, signs = false }

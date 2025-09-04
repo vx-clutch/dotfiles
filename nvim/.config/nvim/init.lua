@@ -20,7 +20,7 @@ end
 vim.keymap.set("n", "<leader>en", ":edit $HOME/.config/nvim/init.lua<CR>")
 vim.keymap.set("n", "<leader>ez", ":edit $HOME/.zshrc<CR>")
 
-vim.keymap.set("n", "<leader>s", function()
+vim.keymap.set("n", "<leader><leader>", function()
 	local alt = vim.fn.expand("%:r") .. (vim.bo.filetype == "c" and ".h" or ".c")
 	vim.cmd("edit " .. alt)
 end)

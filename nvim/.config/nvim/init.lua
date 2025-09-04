@@ -1,4 +1,3 @@
-vim.cmd.colorscheme("quiet");
 vim.o.number = true
 vim.o.relativenumber = true
 vim.o.swapfile = false
@@ -28,22 +27,22 @@ vim.pack.add({
 	{ src = 'https://github.com/neovim/nvim-lspconfig' },
 	{ src = 'https://github.com/hrsh7th/nvim-cmp' },
 	{ src = 'https://github.com/hrsh7th/cmp-nvim-lsp' },
-	{ src = 'https://github.com/chomosuke/typst-preview.nvim' },
 })
 
 require "mini.pick".setup()
 require "mason".setup()
-require 'typst-preview'.setup {}
 
 local cmp = require("cmp")
+local cmp_select = { behavior = cmp.SelectBehavior.Select }
 cmp.setup({
 	preselect = cmp.PreselectMode.Item,
 	completion = { completeopt = "menu,menuone,noinsert" },
 
 	mapping = cmp.mapping.preset.insert({
+		['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
+		['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
+		['<C-y>'] = cmp.mapping.confirm({ select = true }),
 		["<C-Space>"] = cmp.mapping.complete(),
-		["<CR>"] = cmp.mapping.confirm({ select = true }),
-		["<C-e>"] = cmp.mapping.abort(),
 	}),
 
 	sources = cmp.config.sources({
@@ -59,14 +58,16 @@ cmp.setup({
 			border = 'rounded', },
 		documentation = cmp.config.window.bordered { border = 'rounded' },
 	},
-
-	experimental = {
-		ghost_text = true,
-	}
-
 })
 
-vim.lsp.enable({ "lua_ls", "clangd", "tinymist" })
+local lc = require("lspconfig")
+lc.jdtls.setup {
+	cmd = { "jdtls", "-configuration", "/home/owen/.cache/jdtls/config", "-data", "/home/owen/.cache/jdtls/workspace" },
+	filetypes = { "java" },
+	root_dur = lc.util.root_pattern(".git", "."),
+}
+
+vim.lsp.enable({ "lua_ls", "clangd", "jdtls" })
 
 vim.diagnostic.config({
 	virtual_text = true,

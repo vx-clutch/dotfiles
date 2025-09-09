@@ -4,7 +4,7 @@ pkgs="$@"
 installer="echo \"error: something went wrong\" ; exit 1"
 
 check() {
-  return command -v xbps-install >dev/null 2>&1
+    command -v "$1" >/dev/null 2>&1
 }
 
 if check xbps-remove; then

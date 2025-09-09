@@ -28,38 +28,10 @@ end)
 vim.pack.add {
 	{ src = "https://github.com/echasnovski/mini.pick" },
 	{ src = "https://github.com/mason-org/mason.nvim" },
-	{ src = "https://github.com/neovim/nvim-lspconfig" },
-	{ src = "https://github.com/hrsh7th/nvim-cmp" },
-	{ src = "https://github.com/hrsh7th/cmp-nvim-lsp" },
 }
 
 require("mini.pick").setup()
 require("mason").setup()
 
-local cmp = require("cmp")
-cmp.setup {
-	preselect = cmp.PreselectMode.Item,
-	completion = { completeopt = "menu,menuone,noinsert" },
-	mapping = cmp.mapping.preset.insert {
-		["<C-p>"] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Select },
-		["<C-n>"] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Select },
-		["<C-y>"] = cmp.mapping.confirm { select = true },
-		["<C-Space>"] = cmp.mapping.complete(),
-	},
-	sources = { { name = "nvim_lsp" } },
-	performance = { max_view_entries = 5 },
-	window = {
-		completion = cmp.config.window.bordered { border = "rounded" },
-		documentation = cmp.config.window.bordered { border = "rounded" },
-	},
-}
-
-local lc = require("lspconfig")
-lc.jdtls.setup {
-	cmd = { "jdtls", "-configuration", vim.fn.stdpath("cache") .. "/jdtls/config", "-data", vim.fn.stdpath("cache") .. "/jdtls/workspace" },
-	filetypes = { "java" },
-	root_dir = lc.util.root_pattern(".git", "."),
-}
-
-vim.lsp.enable { "lua_ls", "clangd", "jdtls" }
+vim.lsp.enable { "lua_ls", "clangd" }
 vim.diagnostic.config { virtual_text = true, underline = true, signs = false }

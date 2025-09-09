@@ -6,8 +6,7 @@ export VISUAL=nvim
 export TERM="xterm-256color"
 export COLORTERM=truecolor
 
-export PATH=$HOME/opt/script:$PATH
-export PATH=$HOME/opt/bin:$PATH
+export PATH=$HOME/.local/bin:$PATH
 
 alias ls='ls --color=auto'
 alias ll='ls -lah'

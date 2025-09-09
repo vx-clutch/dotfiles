@@ -1,0 +1,25 @@
+#!/bin/sh
+
+pkgs="$@"
+installer="echo \"error: something went wrong\" ; exit 1"
+
+check() {
+  return command -v xbps-install >dev/null 2>&1
+}
+
+if check xbps-remove; then
+  installer="sudo xbps-remove"
+elif check pacman; then
+  installer="sudo pacman -R"
+elif check apt; then
+  installer="sudo apt remove"
+elif check dnf; then
+  installer="sudo dnf remove"
+elif check brew; then
+  installer="brew remove"
+else
+  echo "error: could not find package manager." ; exit 1
+fi
+
+$installer $pkgs && echo "done." && exit 0
+exit 1

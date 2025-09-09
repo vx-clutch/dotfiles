@@ -1,0 +1,16 @@
+#!/bin/sh
+
+pkgs="$@"
+check() {
+  return command -v xbps-install >dev/null 2>&1
+}
+
+if check xbps-install; then
+  installer="sudo xbps-install -Syu"
+elif check pacman; then
+  installer="sudo pacman -Syu"
+elif check apt; then
+  installer="sudo apt install -y"
+else
+  echo Could not find package manager.
+fi

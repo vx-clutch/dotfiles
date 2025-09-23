@@ -28,14 +28,21 @@ vim.keymap.set("n", "<leader><leader>", function()
 end)
 
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-    pattern = "*",
-    callback = function()
-        local ext = vim.fn.expand("%:e")
-        local firstline = vim.fn.getline(1)
-        if ext == "" and not firstline:match("^#!") then
-            vim.bo.filetype = "noext"
-        end
-    end,
+	pattern = "*",
+	callback = function()
+		local ext = vim.fn.expand("%:e")
+		local firstline = vim.fn.getline(1)
+		if ext == "" and not firstline:match("^#!") then
+			vim.bo.filetype = "noext"
+		end
+	end,
+})
+
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+	pattern = "*.h",
+	callback = function()
+		vim.bo.filetype = "c"
+	end,
 })
 
 vim.pack.add {
@@ -46,6 +53,20 @@ vim.pack.add {
 
 require("mini.pick").setup()
 require("mason").setup()
+
+require 'lspconfig'.clangd.setup {
+	filetypes = { "c", "cpp" },
+	init_options = {
+		compilationDatabasePath = "build",
+	},
+	on_attach = function(client, bufnr)
+		if vim.bo.filetype == "c" and vim.fn.expand("%:e") == "h" then
+			client.config.flags = client.config.flags or {}
+			client.config.flags.allow_incremental_sync = true
+		end
+	end,
+}
+
 
 vim.lsp.enable { "lua_ls", "clangd", "beautysh" }
 vim.diagnostic.config { virtual_text = true, underline = true, signs = false }

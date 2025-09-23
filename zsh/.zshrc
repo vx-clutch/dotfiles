@@ -6,7 +6,10 @@ export VISUAL=nvim
 export TERM="xterm-256color"
 export COLORTERM=truecolor
 
+export XDG_CONFIG_HOME="$HOME/.config"
 export PATH=$HOME/.local/bin:$PATH
+
+export DO="$HOME/do"
 
 alias ls='ls --color=auto'
 alias ll='ls -lah'
@@ -17,6 +20,16 @@ take() {
   mkdir $1;
   cd $1
 }
+
+function show_todo_in_git_repo() {
+    if git rev-parse --is-inside-work-tree &>/dev/null; then
+        [ -f TODO ] && clear && cat TODO
+    fi
+}
+
+autoload -Uz add-zsh-hook
+add-zsh-hook chpwd show_todo_in_git_repo
+show_todo_in_git_repo
 
 [ -f "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh" ] && source "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh"
 plug "zsh-users/zsh-autosuggestions"

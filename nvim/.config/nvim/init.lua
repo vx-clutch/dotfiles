@@ -17,21 +17,35 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 for _, k in ipairs({ "h", "j", "k", "l" }) do
 	vim.keymap.set({ "n", "i", "v" }, "<C-" .. k .. ">", "<C-w><C-" .. k .. ">")
 end
-vim.keymap.set("n", "<leader>en", ":edit $HOME/.config/nvim/init.lua<CR>")
-vim.keymap.set("n", "<leader>ez", ":edit $HOME/.zshrc<CR>")
+
+vim.keymap.set("n", "<leader>en", ":edit $XDG_CONFIG_HOME/nvim/init.lua<CR>")
+vim.keymap.set("n", "<leader>ez", ":edit $ZSHRC<CR>")
+vim.keymap.set("n", "<leader>ed", ":edit $DO<CR>")
 
 vim.keymap.set("n", "<leader><leader>", function()
 	local alt = vim.fn.expand("%:r") .. (vim.bo.filetype == "c" and ".h" or ".c")
 	vim.cmd("edit " .. alt)
 end)
 
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+    pattern = "*",
+    callback = function()
+        local ext = vim.fn.expand("%:e")
+        local firstline = vim.fn.getline(1)
+        if ext == "" and not firstline:match("^#!") then
+            vim.bo.filetype = "noext"
+        end
+    end,
+})
+
 vim.pack.add {
 	{ src = "https://github.com/echasnovski/mini.pick" },
 	{ src = "https://github.com/mason-org/mason.nvim" },
+	{ src = "https://github.com/neovim/nvim-lspconfig" },
 }
 
 require("mini.pick").setup()
 require("mason").setup()
 
-vim.lsp.enable { "lua_ls", "clangd" }
+vim.lsp.enable { "lua_ls", "clangd", "beautysh" }
 vim.diagnostic.config { virtual_text = true, underline = true, signs = false }

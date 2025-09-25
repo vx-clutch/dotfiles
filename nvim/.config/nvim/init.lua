@@ -1,3 +1,5 @@
+vim.cmd.colorscheme("desert")
+vim.cmd("hi Normal guibg=#181818")
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.swapfile = false

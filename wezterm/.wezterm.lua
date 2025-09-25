@@ -21,10 +21,16 @@ config.window_padding = {
 	bottom = 0,
 }
 
+config.scrollback_lines = 1000
+
 config.font = wezterm.font("ComicShannsMono Nerd Font")
 config.font_size = 20.0
 
 config.front_end = "WebGpu"
 config.window_decorations = "RESIZE"
+
+config.colors = {
+	background = '181818'
+}
 
 return config

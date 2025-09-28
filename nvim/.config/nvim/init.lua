@@ -25,7 +25,16 @@ vim.keymap.set("n", "<leader>ez", ":edit $ZSHRC<CR>")
 vim.keymap.set("n", "<leader>ed", ":edit $DO<CR>")
 
 vim.keymap.set("n", "<leader><leader>", function()
-	local alt = vim.fn.expand("%:r") .. (vim.bo.filetype == "c" and ".h" or ".c")
+	local ext = vim.fn.expand("%:e")
+	local base = vim.fn.expand("%:r")
+	local alt
+	if ext == "c" then
+		alt = base .. ".h"
+	elseif ext == "h" then
+		alt = base .. ".c"
+	else
+		return
+	end
 	vim.cmd("edit " .. alt)
 end)
 

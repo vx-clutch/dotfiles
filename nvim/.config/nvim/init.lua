@@ -1,5 +1,3 @@
-vim.cmd.colorscheme("desert")
-vim.cmd("hi Normal guibg=#181818")
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.swapfile = false
@@ -60,12 +58,13 @@ vim.pack.add {
 	{ src = "https://github.com/echasnovski/mini.pick" },
 	{ src = "https://github.com/mason-org/mason.nvim" },
 	{ src = "https://github.com/neovim/nvim-lspconfig" },
+	{ src = "https://github.com/vague2k/vague.nvim" },
 }
 
 require("mini.pick").setup()
 require("mason").setup()
 
-require 'lspconfig'.clangd.setup {
+vim.lsp.config.clangd = {
 	filetypes = { "c", "cpp" },
 	init_options = {
 		compilationDatabasePath = "build",
@@ -81,3 +80,5 @@ require 'lspconfig'.clangd.setup {
 
 vim.lsp.enable { "lua_ls", "clangd", "beautysh" }
 vim.diagnostic.config { virtual_text = true, underline = true, signs = false }
+
+vim.cmd.colorscheme("vague")

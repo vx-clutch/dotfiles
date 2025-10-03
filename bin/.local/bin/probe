@@ -1,11 +1,9 @@
 #!/bin/sh
 
-# TODO: if optional name if not prompt for name.
-
 # Usage: $0 [name]
 
 prog_name=$(basename $0)
-tool_version="beta"
+tool_version="1.0"
 year=2025
 
 fatal() {
@@ -36,15 +34,23 @@ EOF
 }
 
 new_proj() {
-	fatal "NOT IMPL"
+  local prj=$1
+  mkdir -p $HOME/probe/$prj &&
+  cd $HOME/probe/$prj
 }
+
+if [ "$#" -eq 0 ]; then
+  read -p "(project) " rp
+  new_proj $rp
+  exit 0
+fi
 
 while [ $# -gt 0 ]; do
     case "$1" in
         --help) print_help; exit 0 ;;
         --version) print_version; exit 0 ;;
         *)
-            new_proj $1
+            new_proj $1; exit 0
             ;;
     esac
     shift

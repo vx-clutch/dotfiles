@@ -32,7 +32,7 @@ EOF
 new_proj() {
   local prj=$1
   mkdir -p $HOME/probe/$prj &&
-  cd $HOME/probe/$prj
+  echo "cd $HOME/probe/$prj"
 }
 
 if [ "$#" -eq 0 ]; then

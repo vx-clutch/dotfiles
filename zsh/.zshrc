@@ -1,8 +1,8 @@
-source ~/.local/share/vxclutch/bash/aliases
-source ~/.local/share/vxclutch/bash/envs
-source ~/.local/share/vxclutch/bash/functions
-source ~/.local/share/vxclutch/bash/init
-source ~/.local/share/vxclutch/bash/shell
-source ~/.local/share/vxclutch/bash/plugins
+source ~/.local/share/vxclutch/zsh/aliases
+source ~/.local/share/vxclutch/zsh/envs
+source ~/.local/share/vxclutch/zsh/functions
+source ~/.local/share/vxclutch/zsh/init
+source ~/.local/share/vxclutch/zsh/shell
+source ~/.local/share/vxclutch/zsh/plugins
 
-source ~/.local/share/vxclutch/bash/rc
+source ~/.local/share/vxclutch/zsh/rc

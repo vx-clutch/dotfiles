@@ -2,72 +2,40 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.swapfile = false
 vim.opt.wrap = false
-vim.opt.winborder = "rounded"
 vim.opt.splitright = true
 vim.opt.splitbelow = true
-vim.opt.wildoptions = {}
 
 vim.g.mapleader = " "
-vim.keymap.set("n", "<Esc>", ":nohlsearch<CR>")
-vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
-vim.keymap.set("n", "<leader>r>", ":make<CR>")
-vim.keymap.set("n", "<leader>o", ":Pick files<CR>")
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 for _, k in ipairs({ "h", "j", "k", "l" }) do
 	vim.keymap.set({ "n", "i", "v" }, "<C-" .. k .. ">", "<C-w><C-" .. k .. ">")
 end
 
-vim.keymap.set("n", "<leader>en", ":edit $XDG_CONFIG_HOME/nvim/init.lua<CR>")
-vim.keymap.set("n", "<leader>ez", ":edit $ZSHRC<CR>")
-vim.keymap.set("n", "<leader>ed", ":edit $DO<CR>")
-
-vim.keymap.set("n", "<leader><leader>", function()
-	local ext = vim.fn.expand("%:e")
-	local base = vim.fn.expand("%:r")
-	local alt
-	if ext == "c" then
-		alt = base .. ".h"
-	elseif ext == "h" then
-		alt = base .. ".c"
-	else
-		return
-	end
-	vim.cmd("edit " .. alt)
-end)
-
-vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-	pattern = "*",
-	callback = function()
-		local ext = vim.fn.expand("%:e")
-		local firstline = vim.fn.getline(1)
-		if ext == "" and not firstline:match("^#!") then
-			vim.bo.filetype = "noext"
-		end
-	end,
-})
-
-vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-	pattern = "*.h",
-	callback = function()
-		vim.bo.filetype = "c"
-	end,
-})
+vim.keymap.set("n", "<leader>en", ":edit " .. vim.fn.expand("$MYVIMRC") .. "<CR>")
+vim.keymap.set("n", "<leader>ez", ":edit ~/.zshrc<CR>")
 
 vim.pack.add {
-	{ src = "https://github.com/echasnovski/mini.pick" },
+	{ src = "https://github.com/nvim-telescope/telescope.nvim" },
 	{ src = "https://github.com/mason-org/mason.nvim" },
-	{ src = "https://github.com/neovim/nvim-lspconfig" },
 	{ src = "https://github.com/vague2k/vague.nvim" },
 }
 
 require("mini.pick").setup()
 require("mason").setup()
+require("telescope").setup()
+
+local builtin = require('telescope.builtin')
+vim.keymap.set('n', '<leader>sf', builtin.find_files)
+vim.keymap.set('n', '<leader>sg', builtin.live_grep)
+vim.keymap.set('n', '<leader>sb', builtin.buffers)
+vim.keymap.set('n', '<leader>sh', builtin.help_tags)
+vim.keymap.set('n', '<leader>sm', builtin.man_pages)
 
 vim.lsp.config.clangd = {
-	filetypes = { "c", "cpp" },
+	filetypes = { "c", "cpp", "h", "hpp" },
 	init_options = {
-		compilationDatabasePath = "build",
+		compilationDatabasePath = ".",
 	},
 	on_attach = function(client, bufnr)
 		if vim.bo.filetype == "c" and vim.fn.expand("%:e") == "h" then
@@ -78,7 +46,7 @@ vim.lsp.config.clangd = {
 }
 
 
-vim.lsp.enable { "lua_ls", "clangd", "beautysh" }
+vim.lsp.enable { "clangd" }
 vim.diagnostic.config { virtual_text = true, underline = true, signs = false }
 
 vim.cmd.colorscheme("vague")

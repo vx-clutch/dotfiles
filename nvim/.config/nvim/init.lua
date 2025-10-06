@@ -12,16 +12,16 @@ for _, k in ipairs({ "h", "j", "k", "l" }) do
 	vim.keymap.set({ "n", "i", "v" }, "<C-" .. k .. ">", "<C-w><C-" .. k .. ">")
 end
 
-vim.keymap.set("n", "<leader>en", ":edit $MYVIMRC")
+vim.keymap.set("n", "<leader>en", ":edit $MYVIMRC<CR>")
 vim.keymap.set("n", "<leader>ez", ":edit ~/.zshrc<CR>")
 
 vim.pack.add {
+	{ src = "https://github.com/nvim-lua/plenary.nvim" },
 	{ src = "https://github.com/nvim-telescope/telescope.nvim" },
 	{ src = "https://github.com/mason-org/mason.nvim" },
 	{ src = "https://github.com/vague2k/vague.nvim" },
 }
 
-require("mini.pick").setup()
 require("mason").setup()
 require("telescope").setup()
 

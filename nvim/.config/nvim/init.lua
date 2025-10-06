@@ -12,7 +12,7 @@ for _, k in ipairs({ "h", "j", "k", "l" }) do
 	vim.keymap.set({ "n", "i", "v" }, "<C-" .. k .. ">", "<C-w><C-" .. k .. ">")
 end
 
-vim.keymap.set("n", "<leader>en", ":edit " .. vim.fn.expand("$MYVIMRC") .. "<CR>")
+vim.keymap.set("n", "<leader>en", ":edit $MYVIMRC")
 vim.keymap.set("n", "<leader>ez", ":edit ~/.zshrc<CR>")
 
 vim.pack.add {

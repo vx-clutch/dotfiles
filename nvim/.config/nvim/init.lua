@@ -19,7 +19,7 @@ vim.pack.add {
 	{ src = "https://github.com/nvim-lua/plenary.nvim" },
 	{ src = "https://github.com/nvim-telescope/telescope.nvim" },
 	{ src = "https://github.com/mason-org/mason.nvim" },
-	{ src = "https://github.com/vague2k/vague.nvim" },
+	{ src = "https://github.com/blazkowolf/gruber-darker.nvim" },
 }
 
 require("mason").setup()
@@ -49,4 +49,4 @@ vim.lsp.config.clangd = {
 vim.lsp.enable { "clangd" }
 vim.diagnostic.config { virtual_text = true, underline = true, signs = false }
 
-vim.cmd.colorscheme("vague")
+vim.cmd.colorscheme("gruber-darker")

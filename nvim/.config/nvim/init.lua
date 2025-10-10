@@ -13,10 +13,6 @@ for _, k in ipairs({ "h", "j", "k", "l" }) do
 end
 
 vim.keymap.set("n", "<Esc>", ":nohlsearch<CR>")
-vim.keymap.set("n", "<leader>r", function()
-	vim.cmd("below Compile")
-	vim.cmd("wincmd p")
-end) -- TODO(vx-clutch): Compile then move to last opened buffer
 vim.keymap.set("n", "<leader>en", ":edit $MYVIMRC<CR>")
 vim.keymap.set("n", "<leader>ez", ":edit ~/.zshrc<CR>")
 
@@ -24,14 +20,11 @@ vim.pack.add {
 	{ src = "https://github.com/nvim-lua/plenary.nvim" },
 	{ src = "https://github.com/nvim-telescope/telescope.nvim" },
 	{ src = "https://github.com/mason-org/mason.nvim" },
-	{ src = "https://github.com/ej-shafran/compile-mode.nvim" },
 	{ src = "https://github.com/blazkowolf/gruber-darker.nvim" },
 }
 
 require("mason").setup()
 require("telescope").setup()
-
-vim.g.compile_mode = {}
 
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>sf', builtin.find_files)

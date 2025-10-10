@@ -29,8 +29,6 @@ config.font_size = 20.0
 config.front_end = "WebGpu"
 config.window_decorations = "RESIZE"
 
-config.colors = {
-	background = '181818'
-}
+config.color_scheme = 'Gruber (base16)'
 
 return config

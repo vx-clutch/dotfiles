@@ -13,7 +13,10 @@ for _, k in ipairs({ "h", "j", "k", "l" }) do
 end
 
 vim.keymap.set("n", "<Esc>", ":nohlsearch<CR>")
-vim.keymap.set("n", "<leader>r", "") -- TODO(vx-clutch): Compile then move to last opened buffer
+vim.keymap.set("n", "<leader>r", function()
+	vim.cmd("below Compile")
+	vim.cmd("wincmd p")
+end) -- TODO(vx-clutch): Compile then move to last opened buffer
 vim.keymap.set("n", "<leader>en", ":edit $MYVIMRC<CR>")
 vim.keymap.set("n", "<leader>ez", ":edit ~/.zshrc<CR>")
 

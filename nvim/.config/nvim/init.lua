@@ -34,18 +34,10 @@ vim.keymap.set('n', '<leader>sh', builtin.help_tags)
 vim.keymap.set('n', '<leader>sm', builtin.man_pages)
 
 vim.lsp.config.clangd = {
-	filetypes = { "c", "cpp", "h", "hpp" },
-	init_options = {
-		compilationDatabasePath = ".",
-	},
-	on_attach = function(client, bufnr)
-		if vim.bo.filetype == "c" and vim.fn.expand("%:e") == "h" then
-			client.config.flags = client.config.flags or {}
-			client.config.flags.allow_incremental_sync = true
-		end
-	end,
+	cmd = { 'clangd' },
+	filetypes = { 'c', 'h', 'cc', 'cpp', 'hpp' },
+	root_markers = { '.git', 'Makefile', '.' },
 }
-
 
 vim.lsp.enable { "clangd" }
 vim.diagnostic.config { virtual_text = true, underline = true, signs = false }

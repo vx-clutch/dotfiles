@@ -1,50 +1,44 @@
+[general]
+import = []
+
 [colors.primary]
 background = "#181818"
-foreground = "#e4e4e4"
+foreground = "#E4E4E4"
 
 [colors.normal]
-black   = "#101010"
-red     = "#f43841"
-green   = "#73d936"
-yellow  = "#ffdd33"
-blue    = "#96a6c8"
-magenta = "#9e95c7"
-cyan    = "#95a99f"
-white   = "#f5f5f5"
+black = "#181818"
+
+red = "#F43841"
+green = "#73D936"
+yellow = "#FFDD33"
+blue = "#96A6C8"
+magenta = "#9E95C7"
+cyan = "#95A99F"
+white = "#E4E4E4"
 
 [colors.bright]
-black   = "#282828"
-red     = "#ff4f58"
-green   = "#73d936"
-yellow  = "#ffdd33"
-blue    = "#96a6c8"
-magenta = "#9e95c7"
-cyan    = "#95a99f"
-white   = "#ffffff"
-
-[colors.cursor]
-text = "#000000"
-cursor = "#f4f4ff"
-
-[colors.selection]
-text = "#ffffff"
-background = "#484848"
+black = "#52494E"
+red = "#FF4F58"
+green = "#73D936"
+yellow = "#FFDD33"
+blue = "#96A6C8"
+magenta = "#AFAFD7"
+cyan = "#95A99F"
+white = "#F5F5F5"
 
 [env]
 TERM = "xterm-256color"
 
 [font]
-normal = { family = "ComicShanns Nerd Font", style = "Regular" }
-bold = { family = "ComicShanns Nerd Font", style = "Bold" }
-italic = { family = "ComicShanns Nerd Font", style = "Italic" }
+normal = { family = "ComicShannsMono Nerd Font", style = "Regular" }
+bold = { family = "ComicShannsMono Nerd Font", style = "Bold" }
+italic = { family = "ComicShannsMono Nerd Font", style = "Italic" }
 size = 9
 
 [window]
-padding.x = 14
-padding.y = 14
-decorations = "None"
+padding = { x = 14, y = 14 }
+decorations = "none"
 
-[keyboard]
-bindings = [
-{ key = "F11", action = "ToggleFullscreen" }
-]
+[[keyboard.bindings]]
+key = "F11"
+action = "ToggleFullscreen"

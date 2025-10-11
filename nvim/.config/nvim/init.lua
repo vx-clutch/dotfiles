@@ -19,12 +19,37 @@ vim.keymap.set("n", "<leader>ez", ":edit ~/.zshrc<CR>")
 vim.pack.add {
 	{ src = "https://github.com/nvim-lua/plenary.nvim" },
 	{ src = "https://github.com/nvim-telescope/telescope.nvim" },
-	{ src = "https://github.com/mason-org/mason.nvim" },
+	{ src = "https://github.com/nvim-telescope/telescope-ui-select.nvim" },
+	{ src = "https://github.com/neovim/nvim-lspconfig" },
 	{ src = "https://github.com/blazkowolf/gruber-darker.nvim" },
 }
 
-require("mason").setup()
-require("telescope").setup()
+local telescope = require("telescope")
+telescope.setup({
+	defaults = {
+		preview = { treesitter = false },
+		color_devicons = true,
+		sorting_strategy = "ascending",
+		borderchars = {
+			"─", -- top
+			"│", -- right
+			"─", -- bottom
+			"│", -- left
+			"┌", -- top-left
+			"┐", -- top-right
+			"┘", -- bottom-right
+			"└", -- bottom-left
+		},
+		path_displays = { "smart" },
+		layout_config = {
+			height = 100,
+			width = 400,
+			prompt_position = "top",
+			preview_cutoff = 40,
+		}
+	}
+})
+telescope.load_extension("ui-select")
 
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>sf', builtin.find_files)
@@ -37,6 +62,7 @@ vim.lsp.config.clangd = {
     	cmd = { 'clangd', '--background-index', '--clang-tidy', '--completion-style=detailed', '--header-insertion=iwyu' },
 	filetypes = { 'c', 'h', 'cc', 'cpp', 'hpp' },
 	root_dir = function (fname)
+
         	return vim.fs.dirname(vim.fs.find({ '.git', 'Makefile', 'CMakeLists.txt' }, { upward = true })[1])
     	end,
 	single_file_support = true,

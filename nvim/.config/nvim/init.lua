@@ -58,17 +58,17 @@ vim.keymap.set('n', '<leader>sb', builtin.buffers)
 vim.keymap.set('n', '<leader>sh', builtin.help_tags)
 vim.keymap.set('n', '<leader>sm', builtin.man_pages)
 
-vim.lsp.config.clangd = {
-    	cmd = { 'clangd', '--background-index', '--clang-tidy', '--completion-style=detailed', '--header-insertion=iwyu' },
-	filetypes = { 'c', 'h', 'cc', 'cpp', 'hpp' },
-	root_dir = function (fname)
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = { "c", "cpp", "h", "hpp" },
+    callback = function()
+        vim.lsp.start {
+            name = "clangd",
+            cmd = { "clangd", "--background-index", "--clang-tidy", "--completion-style=detailed", "--header-insertion=iwyu" },
+            root_dir = vim.fs.dirname(vim.fs.find({ ".git", "Makefile", "CMakeLists.txt" }, { upward = true })[1]),
+        }
+    end,
+})
 
-        	return vim.fs.dirname(vim.fs.find({ '.git', 'Makefile', 'CMakeLists.txt' }, { upward = true })[1])
-    	end,
-	single_file_support = true,
-}
-
-vim.lsp.enable { "clangd" }
 vim.diagnostic.config { virtual_text = true, underline = true, signs = false }
 
 vim.cmd.colorscheme("gruber-darker")

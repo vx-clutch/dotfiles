@@ -64,7 +64,7 @@ vim.api.nvim_create_autocmd("FileType", {
         vim.lsp.start {
             name = "clangd",
             cmd = { "clangd", "--background-index", "--clang-tidy", "--completion-style=detailed", "--header-insertion=iwyu" },
-            root_dir = vim.fs.dirname(vim.fs.find({ ".git", "Makefile", "CMakeLists.txt" }, { upward = true })[1]),
+            root_dir = vim.fs.dirname(vim.fs.find({ ".git", "Makefile", "makefile", "README" }, { upward = true })[1]),
         }
     end,
 })

@@ -140,6 +140,16 @@ require("lazy").setup({
             end)
         end,
     },
+    {
+    'nvim-telescope/telescope.nvim', tag = '0.1.8',
+      dependencies = { 'nvim-lua/plenary.nvim' },
+      config = function ()
+	local builtin = require("telescope.builtin")
+      	require("telescope").setup {}
+	vim.keymap.set("n", "<leader>g", builtin.live_grep)
+	vim.keymap.set("n", "<leader>s", builtin.git_files)
+      end
+    },
 })
 
 vim.diagnostic.config { virtual_text = true, underline = true, signs = false }
